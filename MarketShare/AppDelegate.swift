@@ -11,12 +11,13 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private let container = AppContainer()
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let assetListController = AssetListViewController(style: .plain)
-        let rootController = UINavigationController(rootViewController: assetListController)
+        let rootController = UINavigationController(rootViewController: container.firstController)
         rootController.navigationBar.prefersLargeTitles = true
         window.rootViewController = rootController
         window.makeKeyAndVisible()

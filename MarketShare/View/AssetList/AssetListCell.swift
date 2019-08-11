@@ -7,6 +7,10 @@ final class AssetListCell: UITableViewCell {
     private let roundedContainer = UIView()
     private let mainLabel = UILabel()
     
+    static var reuseIdentifier: String {
+        return NSStringFromClass(AssetListCell.classForCoder())
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
@@ -65,4 +69,13 @@ final class AssetListCell: UITableViewCell {
         ])
     }
 
+}
+
+extension AssetListCell {
+    
+    func configure(with model: AssetListCellModel) {
+        mainLabel.text = model.name
+        roundedContainer.backgroundColor = model.color
+    }
+    
 }
