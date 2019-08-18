@@ -1,4 +1,4 @@
-struct WorldBankPaging {
+struct WorldBankPaging: Codable {
     
     let lastUpdated: String
     let page: Int
@@ -7,13 +7,13 @@ struct WorldBankPaging {
     let sourceId: String
     let total: Int
     
-    private enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         
         case lastUpdated = "lastupdated"
         case page
         case pages
         case perPage = "per_page"
-        case sourceId = "source_id"
+        case sourceId = "sourceid"
         case total
         
     }

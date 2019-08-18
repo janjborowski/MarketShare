@@ -2,21 +2,18 @@ import XCTest
 import OHHTTPStubs
 @testable import MarketShare
 
-class APIFetcherTests: XCTestCase {
+class APIFetcherTests: OperationTestCase {
     
     private let path = "http://someapi.com"
-    private var queue: OperationQueue!
     private var sut: APIFetcher!
 
     override func setUp() {
         super.setUp()
         
-        queue = OperationQueue()
         sut = APIFetcher(path: path)
     }
 
     override func tearDown() {
-        queue = nil
         sut = nil
         OHHTTPStubs.removeAllStubs()
         
@@ -31,27 +28,27 @@ class APIFetcherTests: XCTestCase {
             return fixture(filePath: stubPath!, headers: ["Content-Type":"application/json"])
         }
         
-        setUpBlockExpectation {
+        setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
             XCTAssertNil(self.sut.error)
             XCTAssertNotNil(self.sut.data)
         }
         
-        waitForExpectations(timeout: 0.1, handler: nil)
+        waitForExpectations()
     }
     
     func test_ShouldFinishWithAPIError_WhenPathIsWrong() {
         let expectationToBeCalled = defaultExpectation
         sut = APIFetcher(path: "")
         
-        setUpBlockExpectation {
+        setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
             
             XCTAssertNil(self.sut.data)
             XCTAssertEqual((self.sut.error as? APIError), APIError.wrongPath)
         }
         
-        waitForExpectations(timeout: 0.1, handler: nil)
+        waitForExpectations()
     }
     
     func test_ShouldFinishWithError_WhenErrorIsPresent() {
@@ -62,22 +59,14 @@ class APIFetcherTests: XCTestCase {
             return OHHTTPStubsResponse(error:notConnectedError)
         }
         
-        setUpBlockExpectation {
+        setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
             
             XCTAssertNil(self.sut.data)
             XCTAssertNotNil(self.sut.error)
         }
         
-        waitForExpectations(timeout: 0.1, handler: nil)
-    }
-    
-    private func setUpBlockExpectation(blockOperationContent:@escaping () -> Void) {
-        let blockOperation = BlockOperation(block: blockOperationContent)
-        
-        blockOperation.addDependency(sut)
-        queue.addOperation(blockOperation)
-        queue.addOperation(sut)
+        waitForExpectations()
     }
 
 }

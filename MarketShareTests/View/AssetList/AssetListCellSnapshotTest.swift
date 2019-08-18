@@ -8,7 +8,7 @@ class AssetListCellSnapshotTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        record = true
+        record = false
         
         sut = AssetListCell()
     }
