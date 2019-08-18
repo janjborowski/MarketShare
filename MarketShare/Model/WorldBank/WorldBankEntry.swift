@@ -43,4 +43,15 @@ struct WorldBankEntry: Codable {
         }
     }
     
+    init(country: WorldBankCountry, countryISO3Code: String, date: String, decimal: Int, indicator: WorldBankIndicator, obsStatus: String, unit: String, value: Double?) {
+        self.country = country
+        self.countryISO3Code = countryISO3Code
+        self.date = date
+        self.decimal = decimal
+        self.indicator = indicator
+        self.obsStatus = obsStatus
+        self.unit = unit
+        self.value = value
+    }
+    
 }
