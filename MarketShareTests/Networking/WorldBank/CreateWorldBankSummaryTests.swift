@@ -37,14 +37,14 @@ class CreateWorldBankSummaryTests: OperationTestCase {
             let summary = self.sut.summary!
             XCTAssertEqual(summary.name, WorldBankIndicator.indicator.name)
             XCTAssertEqual(summary.entries.count, 2)
-            
-            XCTAssertEqual(summary.entries.first?.name, WorldBankCountry.small.name)
-            XCTAssertEqual(summary.entries.first?.value, 10)
-            XCTAssertEqual(summary.entries.first?.totalShare, Decimal(0.1))
 
-            XCTAssertEqual(summary.entries.last?.name, WorldBankCountry.big.name)
-            XCTAssertEqual(summary.entries.last?.value, 90)
-            XCTAssertEqual(summary.entries.last?.totalShare, Decimal(0.9))
+            XCTAssertEqual(summary.entries.first?.name, WorldBankCountry.big.name)
+            XCTAssertEqual(summary.entries.first?.value, 90)
+            XCTAssertEqual(summary.entries.first?.totalShare, Decimal(0.9))
+            
+            XCTAssertEqual(summary.entries.last?.name, WorldBankCountry.small.name)
+            XCTAssertEqual(summary.entries.last?.value, 10)
+            XCTAssertEqual(summary.entries.last?.totalShare, Decimal(0.1))
         }
         
         waitForExpectations()
@@ -77,6 +77,26 @@ private extension WorldBankResponse {
                 obsStatus: "",
                 unit: "",
                 value: 90
+            ),
+            WorldBankEntry(
+                country: .no,
+                countryISO3Code: "",
+                date: "2018",
+                decimal: 0,
+                indicator: .indicator,
+                obsStatus: "",
+                unit: "",
+                value: 90
+            ),
+            WorldBankEntry(
+                country: .tiny,
+                countryISO3Code: WorldBankCountry.tiny.id,
+                date: "2018",
+                decimal: 0,
+                indicator: .indicator,
+                obsStatus: "",
+                unit: "",
+                value: 0
             )
         ]
         
@@ -93,6 +113,14 @@ private extension WorldBankCountry {
     
     static var big: WorldBankCountry {
         return WorldBankCountry(id: "2", name: "Big country")
+    }
+    
+    static var no: WorldBankCountry {
+        return WorldBankCountry(id: "3", name: "No country")
+    }
+    
+    static var tiny: WorldBankCountry {
+        return WorldBankCountry(id: "4", name: "Tiny country without share")
     }
     
 }

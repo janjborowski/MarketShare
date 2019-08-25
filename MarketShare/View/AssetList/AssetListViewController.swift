@@ -3,10 +3,13 @@ import UIKit
 final class AssetListViewController: UITableViewController {
     
     private let viewModel: AssetListViewModelProtocol
+    private let flowController: AssetListViewControllerFlowControllerProtocol
     
-    init(viewModel: AssetListViewModelProtocol) {
+    init(viewModel: AssetListViewModelProtocol, flowController: AssetListViewControllerFlowControllerProtocol) {
         self.viewModel = viewModel
+        self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
+        flowController.sourceController = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +40,10 @@ final class AssetListViewController: UITableViewController {
         }
         cell.configure(with: viewModel.cells[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        flowController.goToDetails()
     }
     
 }

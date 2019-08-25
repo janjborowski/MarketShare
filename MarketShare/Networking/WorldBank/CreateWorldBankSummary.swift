@@ -11,16 +11,23 @@ final class CreateWorldBankSummary: Operation {
             return
         }
         
-        let totalSum = inputData.entries
+        let countries = inputData.entries.filter { $0.countryISO3Code.count > 0 }
+        
+        let totalSum = countries
             .compactMap { Decimal($0.value ?? 0) }
             .reduce(Decimal(0), +)
-        let summaryEntries = inputData.entries.map { worldBankEntry -> SummaryEntry in
-            let value = Decimal(worldBankEntry.value ?? 0)
-            let totalShare = value / totalSum
-            return SummaryEntry(name: worldBankEntry.country.name, value: value, totalShare: totalShare)
-        }
         
-        let summaryName = inputData.entries.first?.indicator.name ?? ""
+        let summaryEntries = countries.map { worldBankEntry -> SummaryEntry in
+                let value = Decimal(worldBankEntry.value ?? 0)
+                let totalShare = value / totalSum
+                return SummaryEntry(name: worldBankEntry.country.name, value: value, totalShare: totalShare)
+            }
+            .filter { $0.totalShare > 0 }
+            .sorted { (entry1, entry2) -> Bool in
+                return entry1.totalShare > entry2.totalShare
+            }
+        
+        let summaryName = countries.first?.indicator.name ?? ""
         summary = Summary(name: summaryName, entries: summaryEntries)
     }
     
