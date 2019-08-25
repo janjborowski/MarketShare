@@ -1,3 +1,7 @@
+# Production libraries
 github "Swinject/Swinject"
+github "danielgindi/Charts" ~> 3.3.0
+
+# Test libraries
 github "pointfreeco/swift-snapshot-testing" ~> 1.5
 github "AliSoftware/OHHTTPStubs"

@@ -1,4 +1,5 @@
 import UIKit
+import Charts
 
 final class AssetInfoViewController: UIViewController {
 
@@ -7,6 +8,8 @@ final class AssetInfoViewController: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .gray)
     private let errorLabel = UILabel()
     
+    private let mainContainer = UIStackView()
+    private let pieChartView = PieChartView()
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let cellReuseIdentifier = "reuseIdentifier"
     
@@ -29,15 +32,36 @@ final class AssetInfoViewController: UIViewController {
     
     private func setUpViews() {
         setUpSelf()
+        setUpMainContainer()
+        setUpChart()
         setUpTableView()
         setUpActivityIndicator()
         setUpErrorLabel()
+        
         setUpConstaints()
     }
     
     private func setUpSelf() {
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
+        
         view.backgroundColor = UIColor.white
+    }
+    
+    private func setUpMainContainer() {
+        mainContainer.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.axis = .vertical
+        mainContainer.distribution = .fill
+        mainContainer.spacing = 0
+        
+        view.addSubview(mainContainer)
+    }
+    
+    private func setUpChart() {
+        pieChartView.translatesAutoresizingMaskIntoConstraints = false
+        pieChartView.chartDescription?.enabled = false
+        pieChartView.legend.enabled = false
+        
+        mainContainer.addArrangedSubview(pieChartView)
     }
     
     private func setUpTableView() {
@@ -45,7 +69,7 @@ final class AssetInfoViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        view.addSubview(tableView)
+        mainContainer.addArrangedSubview(tableView)
     }
     
     private func setUpActivityIndicator() {
@@ -65,10 +89,12 @@ final class AssetInfoViewController: UIViewController {
     
     private func setUpConstaints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainContainer.topAnchor.constraint(equalTo: view.topAnchor),
+            mainContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mainContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            pieChartView.heightAnchor.constraint(equalToConstant: 350),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -100,22 +126,43 @@ final class AssetInfoViewController: UIViewController {
     private func configureForLoading() {
         activityIndicator.startAnimating()
         
-        tableView.isHidden = true
+        mainContainer.isHidden = true
         errorLabel.isHidden = true
     }
     
     private func configureForFetched() {
         activityIndicator.stopAnimating()
         
+        pieChartView.data = createPieChartData()
         tableView.reloadData()
-        tableView.isHidden = false
+        mainContainer.isHidden = false
         errorLabel.isHidden = true
+    }
+    
+    private func createPieChartData() -> PieChartData {
+        let set = PieChartDataSet(entries: viewModel.pieChartEntries, label: nil)
+        set.drawIconsEnabled = false
+        set.drawValuesEnabled = false
+        set.sliceSpace = 2
+        
+        set.colors = ChartColorTemplates.vordiplom()
+            + ChartColorTemplates.joyful()
+            + ChartColorTemplates.colorful()
+            + ChartColorTemplates.liberty()
+            + ChartColorTemplates.pastel()
+            + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
+        
+        let data = PieChartData(dataSet: set)
+        data.setValueFont(.systemFont(ofSize: 12, weight: .light))
+        data.setValueTextColor(.black)
+        
+        return data
     }
     
     private func configureForError() {
         activityIndicator.stopAnimating()
         
-        tableView.isHidden = true
+        mainContainer.isHidden = true
         errorLabel.isHidden = false
     }
 

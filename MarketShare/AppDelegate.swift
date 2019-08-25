@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let rootController = UINavigationController(rootViewController: container.firstController)
         rootController.navigationBar.prefersLargeTitles = true
+        rootController.navigationBar.isTranslucent = false
         window.rootViewController = rootController
+        window.backgroundColor = .white
         window.makeKeyAndVisible()
         self.window = window
         return true
