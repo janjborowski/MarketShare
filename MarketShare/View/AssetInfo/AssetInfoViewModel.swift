@@ -47,21 +47,26 @@ final class AssetInfoViewModel: AssetInfoViewModelProtocol {
     }
     
     private func createPieChartEntries() -> [PieChartDataEntry] {
-        let topEntries = summary.entries[0..<10]
-        let topChartEntries = summary.entries[0..<10].map { (entry) -> PieChartDataEntry in
+        let lastTop10Index = min(summary.entries.count, 10)
+        let topEntries = summary.entries[0..<lastTop10Index]
+        let topChartEntries = topEntries.map { (entry) -> PieChartDataEntry in
             return PieChartDataEntry(
                 value: (entry.totalShare as NSDecimalNumber).doubleValue,
                 label: entry.name
             )
         }
         
-        let restShare = topEntries.map { $0.totalShare }.reduce(1, -)
-        let remainingEntry = PieChartDataEntry(
-            value: (restShare as NSDecimalNumber).doubleValue,
-            label: "others".localized
-        )
-        
-        return topChartEntries + [remainingEntry]
+        if topEntries.count < summary.entries.count {
+            let restShare = topEntries.map { $0.totalShare }.reduce(1, -)
+            let remainingEntry = PieChartDataEntry(
+                value: (restShare as NSDecimalNumber).doubleValue,
+                label: "others".localized
+            )
+            
+            return topChartEntries + [remainingEntry]
+        } else {
+            return topChartEntries
+        }
     }
     
 }

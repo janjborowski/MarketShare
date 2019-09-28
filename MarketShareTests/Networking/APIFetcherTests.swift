@@ -4,16 +4,35 @@ import OHHTTPStubs
 
 class APIFetcherTests: OperationTestCase {
     
+    private final class NetworkingCacheMock: NetworkingCache {
+        
+        var retrievableData: Data?
+        var saveWasCalled = false
+        
+        func retrieveData(for request: URLRequest) -> Data? {
+            return retrievableData
+        }
+        
+        func save(response: URLResponse, data: Data, for request: URLRequest) {
+            saveWasCalled = true
+        }
+        
+    }
+    
     private let path = "http://someapi.com"
+    
+    private var networkingCache: NetworkingCacheMock!
     private var sut: APIFetcher!
 
     override func setUp() {
         super.setUp()
         
-        sut = APIFetcher(path: path)
+        networkingCache = NetworkingCacheMock()
+        sut = APIFetcher(path: path, cache: networkingCache)
     }
 
     override func tearDown() {
+        networkingCache = nil
         sut = nil
         OHHTTPStubs.removeAllStubs()
         
@@ -39,7 +58,7 @@ class APIFetcherTests: OperationTestCase {
     
     func test_ShouldFinishWithAPIError_WhenPathIsWrong() {
         let expectationToBeCalled = defaultExpectation
-        sut = APIFetcher(path: "")
+        sut = APIFetcher(path: "", cache: networkingCache)
         
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
@@ -64,6 +83,37 @@ class APIFetcherTests: OperationTestCase {
             
             XCTAssertNil(self.sut.data)
             XCTAssertNotNil(self.sut.error)
+        }
+        
+        waitForExpectations()
+    }
+    
+    func test_ShouldGetDataFromCache_WhenDataIsCached() {
+        let expectationToBeCalled = defaultExpectation
+        networkingCache.retrievableData = Data()
+        
+        setUpBlockExpectation(sut: sut) {
+            expectationToBeCalled.fulfill()
+            
+            XCTAssertNil(self.sut.error)
+            XCTAssertNotNil(self.sut.data)
+        }
+        
+        waitForExpectations()
+    }
+    
+    func test_ShouldSaveDataInCache_WhenFinishedWithoutError() {
+        let expectationToBeCalled = defaultExpectation
+        
+        stub(condition: isAbsoluteURLString(path)) { _ in
+            let stubPath = OHPathForFile("worldbankresponse.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type":"application/json"])
+        }
+        
+        setUpBlockExpectation(sut: sut) {
+            expectationToBeCalled.fulfill()
+            
+            XCTAssertTrue(self.networkingCache.saveWasCalled)
         }
         
         waitForExpectations()

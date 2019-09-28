@@ -16,8 +16,13 @@ final class AppContainer {
     }
     
     private func registerModelsAndNetworking() {
+        container.register(NetworkingCache.self) { (resolver) -> NetworkingCache in
+            return PersistentNetworkingCache()
+        }
+        
         container.register(WorldBankFetcherProtocol.self) { (resolver) -> WorldBankFetcherProtocol in
-            return WorldBankFetcher()
+            let networkingCache = resolver.resolve(NetworkingCache.self)!
+            return WorldBankFetcher(cache: networkingCache)
         }
     }
     

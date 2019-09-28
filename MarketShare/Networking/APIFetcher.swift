@@ -3,13 +3,16 @@ import Foundation
 final class APIFetcher: AsynchronousOperation {
     
     private let path: String
+    private let cache: NetworkingCache
+    
     private let session = URLSession.shared
     
     private(set) var data: Data?
     private(set) var error: Error?
     
-    init(path: String) {
+    init(path: String, cache: NetworkingCache) {
         self.path = path
+        self.cache = cache
         super.init()
     }
     
@@ -20,26 +23,28 @@ final class APIFetcher: AsynchronousOperation {
         }
         
         let request = URLRequest(url: url)
+        if let data = cache.retrieveData(for: request) {
+            finish(with: data)
+        } else {
+            executeNetworkingTask(with: request)
+        }
+    }
+    
+    private func executeNetworkingTask(with request: URLRequest) {
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard error == nil else {
                 self?.finish(with: error!)
                 return
             }
             
-            guard let data = data else {
+            guard let response = response,
+                let data = data else {
                 self?.finish(with: APIError.noData)
                 return
             }
             
+            self?.cache.save(response: response, data: data, for: request)
             self?.finish(with: data)
-//            self?.result = .success(data)
-//            guard let deserialized = try? JSONDecoder().decode(T.self, from: data) else {
-//                self?.result = .failure(APIError.parsingError)
-//                return
-//            }
-//
-//            self?.result = .success(deserialized)
-//            self?.finish()
         }
         task.resume()
     }
