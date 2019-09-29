@@ -60,7 +60,7 @@ private extension WorldBankResponse {
         let entries: [WorldBankEntry] = [
             WorldBankEntry(
                 country: .small,
-                countryISO3Code: WorldBankCountry.small.id,
+                countryISO3Code: "USA",
                 date: "2018",
                 decimal: 0,
                 indicator: .indicator,
@@ -70,7 +70,7 @@ private extension WorldBankResponse {
             ),
             WorldBankEntry(
                 country: .big,
-                countryISO3Code: WorldBankCountry.big.id,
+                countryISO3Code: "POL",
                 date: "2018",
                 decimal: 0,
                 indicator: .indicator,

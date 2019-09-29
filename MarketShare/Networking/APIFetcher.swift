@@ -1,6 +1,6 @@
 import Foundation
 
-final class APIFetcher: AsynchronousOperation {
+final class APIFetcher: AsynchronousOperation, Resultable {
     
     private let path: String
     private let cache: NetworkingCache

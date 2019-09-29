@@ -1,6 +1,6 @@
 import Foundation
 
-final class MapWorldBankData: Operation {
+final class MapWorldBankData: Operation, Inputtable, Resultable {
     
     private let decoder = JSONDecoder()
     

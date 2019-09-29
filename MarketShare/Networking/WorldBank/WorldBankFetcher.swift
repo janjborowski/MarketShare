@@ -23,23 +23,11 @@ final class WorldBankFetcher: WorldBankFetcherProtocol {
         let worldBankMapper = MapWorldBankData()
         let createWorldBankSummary = CreateWorldBankSummary()
         
-        let apiToWorldBankPasser = BlockOperation {
-            worldBankMapper.inputData = apiFetcher.result
-        }
-        let mapToCreatePasser = BlockOperation {
-            createWorldBankSummary.inputData = worldBankMapper.result
-        }
-        let outputPasser = BlockOperation {
-            completion(try? createWorldBankSummary.result.get())
-        }
+        queue.succeed(operation: worldBankMapper, after: apiFetcher)
+        queue.succeed(operation: createWorldBankSummary, after: worldBankMapper)
+        queue.succeed(operation: createWorldBankSummary, with: completion)
         
-        outputPasser.addDependency(createWorldBankSummary)
-        createWorldBankSummary.addDependency(mapToCreatePasser)
-        mapToCreatePasser.addDependency(worldBankMapper)
-        worldBankMapper.addDependency(apiToWorldBankPasser)
-        apiToWorldBankPasser.addDependency(apiFetcher)
-        
-        [apiFetcher, apiToWorldBankPasser, worldBankMapper, mapToCreatePasser, createWorldBankSummary, outputPasser].forEach { queue.addOperation($0) }
+        [apiFetcher, worldBankMapper, createWorldBankSummary].forEach { queue.addOperation($0) }
     }
     
 }
