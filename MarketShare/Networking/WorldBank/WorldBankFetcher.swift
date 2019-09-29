@@ -2,7 +2,7 @@ import Foundation
 
 protocol WorldBankFetcherProtocol {
     
-    func download(completion: @escaping (Summary?) -> Void)
+    func download(asset: Asset, completion: @escaping (Summary?) -> Void)
     
 }
 
@@ -18,19 +18,19 @@ final class WorldBankFetcher: WorldBankFetcherProtocol {
         queue.qualityOfService = .userInitiated
     }
     
-    func download(completion: @escaping (Summary?) -> Void) {
+    func download(asset: Asset, completion: @escaping (Summary?) -> Void) {
         let apiFetcher = APIFetcher(path: path, cache: cache)
         let worldBankMapper = MapWorldBankData()
         let createWorldBankSummary = CreateWorldBankSummary()
         
         let apiToWorldBankPasser = BlockOperation {
-            worldBankMapper.inputData = apiFetcher.data
+            worldBankMapper.inputData = apiFetcher.result
         }
         let mapToCreatePasser = BlockOperation {
-            createWorldBankSummary.inputData = worldBankMapper.worldBankResponse
+            createWorldBankSummary.inputData = worldBankMapper.result
         }
         let outputPasser = BlockOperation {
-            completion(createWorldBankSummary.summary)
+            completion(try? createWorldBankSummary.result.get())
         }
         
         outputPasser.addDependency(createWorldBankSummary)

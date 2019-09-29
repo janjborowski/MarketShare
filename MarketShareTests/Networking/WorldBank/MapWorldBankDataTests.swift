@@ -21,13 +21,15 @@ final class MapWorldBankDataTests: OperationTestCase {
     func test_ShouldMapWorldBankData() {
         let expectationToBeCalled = defaultExpectation
         let path = OHPathForFile("worldbankresponse.json", type(of: self))!
-        sut.inputData = try? Data(contentsOf: URL(fileURLWithPath: path))
+        let rawData = try! Data(contentsOf: URL(fileURLWithPath: path))
+        sut.inputData = .success(rawData)
         
         setUpBlockExpectation(sut: sut, blockOperationContent: {
             expectationToBeCalled.fulfill()
-            XCTAssertEqual(self.sut.worldBankResponse!.paging.perPage, 50)
-            XCTAssertEqual(self.sut.worldBankResponse!.paging.sourceId, "2")
-            XCTAssertEqual(self.sut.worldBankResponse!.entries.count, 14)
+            let worldBankResponse = try! self.sut.result.get()
+            XCTAssertEqual(worldBankResponse.paging.perPage, 50)
+            XCTAssertEqual(worldBankResponse.paging.sourceId, "2")
+            XCTAssertEqual(worldBankResponse.entries.count, 14)
         })
         
         waitForExpectations()
@@ -92,12 +94,12 @@ final class MapWorldBankDataTests: OperationTestCase {
     
     private func executeParsingFailure(with sampleString: String) {
         let expectationToBeCalled = defaultExpectation
-        sut.inputData = sampleString.data(using: .utf8)
+        let sampleStringData = sampleString.data(using: .utf8)!
+        sut.inputData = .success(sampleStringData)
         
         setUpBlockExpectation(sut: sut, blockOperationContent: {
             expectationToBeCalled.fulfill()
-            XCTAssertNotNil(self.sut.error)
-            XCTAssertNil(self.sut.worldBankResponse)
+            XCTAssertNotNil(self.sut.result.error)
         })
         
         waitForExpectations()

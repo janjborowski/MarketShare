@@ -6,9 +6,8 @@ final class APIFetcher: AsynchronousOperation {
     private let cache: NetworkingCache
     
     private let session = URLSession.shared
-    
-    private(set) var data: Data?
-    private(set) var error: Error?
+
+    private(set) var result: Result<Data, Error> = .noResult()
     
     init(path: String, cache: NetworkingCache) {
         self.path = path
@@ -50,12 +49,12 @@ final class APIFetcher: AsynchronousOperation {
     }
     
     private func finish(with error: Error) {
-        self.error = error
+        result = .failure(error)
         finish()
     }
     
     private func finish(with data: Data) {
-        self.data = data
+        result = .success(data)
         finish()
     }
     

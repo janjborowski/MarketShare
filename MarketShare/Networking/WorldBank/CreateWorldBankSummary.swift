@@ -2,12 +2,13 @@ import Foundation
 
 final class CreateWorldBankSummary: Operation {
 
-    var inputData: WorldBankResponse?
+    var inputData: Result<WorldBankResponse, Error>?
     
-    private(set) var summary: Summary?
+    private(set) var result: Result<Summary, Error> = .noResult()
     
     override func main() {
-        guard let inputData = inputData else {
+        guard case let .success(inputData)? = inputData else {
+            propagateError()
             return
         }
         
@@ -28,7 +29,15 @@ final class CreateWorldBankSummary: Operation {
             }
         
         let summaryName = countries.first?.indicator.name ?? ""
-        summary = Summary(name: summaryName, entries: summaryEntries)
+        result = .success(Summary(name: summaryName, entries: summaryEntries))
+    }
+    
+    private func propagateError() {
+        guard case let .failure(error)? = inputData else {
+            return
+        }
+        
+        result = .failure(error)
     }
     
 }

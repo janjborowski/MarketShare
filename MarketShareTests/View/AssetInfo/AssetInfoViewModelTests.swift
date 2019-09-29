@@ -4,10 +4,10 @@ import XCTest
 class AssetInfoViewModelTests: XCTestCase {
 
     private final class WorldBankFetcherMock: WorldBankFetcherProtocol {
-        
+    
         var mock_summary: Summary?
         
-        func download(completion: @escaping (Summary?) -> Void) {
+        func download(asset: Asset, completion: @escaping (Summary?) -> Void) {
             completion(mock_summary)
         }
         

@@ -49,8 +49,7 @@ class APIFetcherTests: OperationTestCase {
         
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
-            XCTAssertNil(self.sut.error)
-            XCTAssertNotNil(self.sut.data)
+            XCTAssertNotNil(try! self.sut.result.get())
         }
         
         waitForExpectations()
@@ -63,8 +62,7 @@ class APIFetcherTests: OperationTestCase {
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
             
-            XCTAssertNil(self.sut.data)
-            XCTAssertEqual((self.sut.error as? APIError), APIError.wrongPath)
+            XCTAssertEqual((self.sut.result.error as? APIError), APIError.wrongPath)
         }
         
         waitForExpectations()
@@ -81,8 +79,7 @@ class APIFetcherTests: OperationTestCase {
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
             
-            XCTAssertNil(self.sut.data)
-            XCTAssertNotNil(self.sut.error)
+            XCTAssertNotNil(self.sut.result.error)
         }
         
         waitForExpectations()
@@ -95,8 +92,7 @@ class APIFetcherTests: OperationTestCase {
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
             
-            XCTAssertNil(self.sut.error)
-            XCTAssertNotNil(self.sut.data)
+            XCTAssertNotNil(try! self.sut.result.get())
         }
         
         waitForExpectations()

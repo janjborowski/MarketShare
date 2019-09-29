@@ -32,7 +32,7 @@ final class AssetInfoViewModel: AssetInfoViewModelProtocol {
     }
     
     func downloadSummaries() {
-        worldBankFetcher.download { [weak self] (summary) in
+        worldBankFetcher.download(asset: .globalStocks) { [weak self] (summary) in
             guard let summary = summary,
                 let weakSelf = self else {
                 self?.state.update(value: .error)

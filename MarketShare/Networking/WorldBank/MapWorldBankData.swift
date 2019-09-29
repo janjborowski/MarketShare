@@ -4,23 +4,23 @@ final class MapWorldBankData: Operation {
     
     private let decoder = JSONDecoder()
     
-    var inputData: Data?
+    var inputData: Result<Data, Error>?
 
-    private(set) var error: Error?
-    private(set) var worldBankResponse: WorldBankResponse?
+    private(set) var result: Result<WorldBankResponse, Error> = .noResult()
 
     override func main() {
-        guard let inputData = inputData else {
-            error = APIError.noData
+        guard case let .success(inputData)? = inputData else {
+            propagateError()
             return
         }
+        
         do {
             let objects = try JSONSerialization.jsonObject(with: inputData, options: JSONSerialization.ReadingOptions()) as? [AnyObject]
             let paging = try mapPaging(object: objects?.first)
             let entries = try mapEntries(object: objects?.last)
-            worldBankResponse = WorldBankResponse(paging: paging, entries: entries)
+            result = .success(WorldBankResponse(paging: paging, entries: entries))
         } catch let error {
-            self.error = error
+            result = .failure(error)
         }
     }
     
@@ -38,6 +38,14 @@ final class MapWorldBankData: Operation {
         }
         let rawObject = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions())
         return try decoder.decode([WorldBankEntry].self, from: rawObject)
+    }
+    
+    private func propagateError() {
+        guard case let .failure(error)? = inputData else {
+            return
+        }
+        
+        result = .failure(error)
     }
     
 }

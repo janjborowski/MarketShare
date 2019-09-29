@@ -22,7 +22,7 @@ class CreateWorldBankSummaryTests: OperationTestCase {
         
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
-            XCTAssertNil(self.sut.summary)
+            XCTAssertNil(try? self.sut.result.get())
         }
         
         waitForExpectations()
@@ -30,11 +30,11 @@ class CreateWorldBankSummaryTests: OperationTestCase {
     
     func test_ShouldMapSummary_WhenDataIsPresent() {
         let expectationToBeCalled = defaultExpectation
-        sut.inputData = WorldBankResponse.sample
+        sut.inputData = .success(WorldBankResponse.sample)
         
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
-            let summary = self.sut.summary!
+            let summary = try! self.sut.result.get()
             XCTAssertEqual(summary.name, WorldBankIndicator.indicator.name)
             XCTAssertEqual(summary.entries.count, 2)
 
