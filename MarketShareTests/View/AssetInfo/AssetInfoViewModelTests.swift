@@ -5,10 +5,12 @@ class AssetInfoViewModelTests: XCTestCase {
 
     private final class WorldBankFetcherMock: WorldBankFetcherProtocol {
     
-        var mock_summary: Summary?
+        var summary: Summary?
+        var mock_download: ((Asset) -> ())?
         
         func download(asset: Asset, completion: @escaping (Summary?) -> Void) {
-            completion(mock_summary)
+            mock_download?(asset)
+            completion(summary)
         }
         
     }
@@ -32,9 +34,9 @@ class AssetInfoViewModelTests: XCTestCase {
 
     func testDownloadSummaries_ShouldCreateCellViewModels_WhenDataIsFetched() {
         let firstEntry = Summary.tests_sample.entries.first!
-        worldBankFetcher.mock_summary = .tests_sample
+        worldBankFetcher.summary = .tests_sample
         
-        sut.downloadSummaries()
+        sut.downloadSummaries(of: .globalStocks)
         
         XCTAssertEqual(sut.state.value, .fetched)
         XCTAssertEqual(sut.cellViewModels.count, 1)
@@ -45,9 +47,9 @@ class AssetInfoViewModelTests: XCTestCase {
     }
     
     func testDownloadSummaries_ShouldCreateTenPieChartEntries_AndOtherOne_WhenThereAreManyEntries() {
-        worldBankFetcher.mock_summary = .tests_huge
+        worldBankFetcher.summary = .tests_huge
         
-        sut.downloadSummaries()
+        sut.downloadSummaries(of: .globalStocks)
         
         XCTAssertEqual(sut.state.value, .fetched)
         XCTAssertEqual(sut.cellViewModels.count, Summary.tests_huge.entries.count)
@@ -57,10 +59,23 @@ class AssetInfoViewModelTests: XCTestCase {
     }
     
     func testDownloadSummaries_ShouldNotCreateCellViewModels_WhenDataIsNotFetched() {
-        sut.downloadSummaries()
+        sut.downloadSummaries(of: .globalStocks)
         
         XCTAssertEqual(sut.state.value, .error)
         XCTAssertEqual(sut.cellViewModels.count, 0)
+    }
+    
+    func testDownloadSummaries_ShouldPassAssetType() {
+        let inputAsset = Asset.emergingMarketStocks
+        let exp = defaultExpectation
+        worldBankFetcher.mock_download = { asset in
+            exp.fulfill()
+            XCTAssertEqual(asset, inputAsset)
+        }
+        
+        sut.downloadSummaries(of: inputAsset)
+        
+        waitForExpectations()
     }
 
 }

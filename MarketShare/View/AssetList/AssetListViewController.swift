@@ -20,7 +20,6 @@ final class AssetListViewController: UITableViewController {
         super.viewDidLoad()
         setUpTableView()
         
-        title = "Assets"
         navigationItem.largeTitleDisplayMode = .automatic
     }
     
@@ -43,7 +42,14 @@ final class AssetListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        flowController.goToDetails()
+        let cellModel = viewModel.cells[indexPath.row]
+        flowController.goToDetails(of: cellModel)
+    }
+    
+    func configure(cells: [AssetListCellModel], name: String) {
+        title = name
+        viewModel.configure(with: cells)
+        tableView.reloadData()
     }
     
 }

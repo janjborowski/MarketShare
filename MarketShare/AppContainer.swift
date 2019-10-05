@@ -6,7 +6,14 @@ final class AppContainer {
     private let container = Container()
     
     var firstController: UIViewController {
-        return container.resolve(AssetListViewController.self)!
+        let viewModel = AssetListViewModel()
+        let flowController = AssetListViewControllerFlowController(
+            infoViewControllerFetcher: { self.create()! },
+            listViewControllerFetcher: { self.create()! }
+        )
+        let viewController = AssetListViewController(viewModel: viewModel, flowController: flowController)
+        viewController.configure(cells: AssetListViewModel.initialCellViewModels, name: "Assets")
+        return viewController
     }
     
     init() {
@@ -40,7 +47,12 @@ final class AppContainer {
     private func registerControllers() {
         container.register(AssetListViewController.self) { (resolver) -> AssetListViewController in
             let viewModel = resolver.resolve(AssetListViewModelProtocol.self)!
-            let flowController = AssetListViewControllerFlowController { self.create()! }
+//            let flowController = AssetListViewControllerFlowController { self.create()! }
+            
+            let flowController = AssetListViewControllerFlowController(
+                infoViewControllerFetcher: { self.create()! },
+                listViewControllerFetcher: { self.create()! }
+            )
             return AssetListViewController(viewModel: viewModel, flowController: flowController)
         }
         

@@ -3,21 +3,32 @@ import UIKit
 protocol AssetListViewControllerFlowControllerProtocol: AnyObject {
     var sourceController: UIViewController! { get set }
     
-    func goToDetails()
+    func goToDetails(of cellModel: AssetListCellModel)
 }
 
 final class AssetListViewControllerFlowController: AssetListViewControllerFlowControllerProtocol {
     
-    private let nextControllerFetcher: () -> AssetInfoViewController
+    private let infoViewControllerFetcher: () -> AssetInfoViewController
+    private let listViewControllerFetcher: () -> AssetListViewController
     
     var sourceController: UIViewController!
     
-    init(nextControllerFetcher: @escaping () -> AssetInfoViewController) {
-        self.nextControllerFetcher = nextControllerFetcher
+    init(infoViewControllerFetcher: @escaping () -> AssetInfoViewController, listViewControllerFetcher: @escaping () -> AssetListViewController) {
+        self.infoViewControllerFetcher = infoViewControllerFetcher
+        self.listViewControllerFetcher = listViewControllerFetcher
     }
     
-    func goToDetails() {
-        sourceController.navigationController?.pushViewController(nextControllerFetcher(), animated: true)
+    func goToDetails(of cellModel: AssetListCellModel) {
+        switch cellModel.cellType {
+        case .single(let asset):
+            let infoViewController = infoViewControllerFetcher()
+            infoViewController.configure(asset)
+            sourceController.navigationController?.pushViewController(infoViewController, animated: true)
+        case .group(let cells):
+            let listViewController = listViewControllerFetcher()
+            listViewController.configure(cells: cells, name: cellModel.name)
+            sourceController.navigationController?.pushViewController(listViewController, animated: true)
+        }
     }
     
 }

@@ -5,8 +5,8 @@ protocol AssetInfoViewModelProtocol {
     var state: Observable<AssetInfoViewModelState> { get }
     var cellViewModels: [AssetInfoCellViewModel] { get }
     var pieChartEntries: [PieChartDataEntry] { get }
-
-    func downloadSummaries()
+    
+    func downloadSummaries(of asset: Asset)
     
 }
 
@@ -31,8 +31,8 @@ final class AssetInfoViewModel: AssetInfoViewModelProtocol {
         self.worldBankFetcher = worldBankFetcher
     }
     
-    func downloadSummaries() {
-        worldBankFetcher.download(asset: .globalStocks) { [weak self] (summary) in
+    func downloadSummaries(of asset: Asset) {
+        worldBankFetcher.download(asset: asset) { [weak self] (summary) in
             guard let summary = summary,
                 let weakSelf = self else {
                 self?.state.update(value: .error)

@@ -27,7 +27,6 @@ final class AssetInfoViewController: UIViewController {
         
         setUpViews()
         setUpObservers()
-        viewModel.downloadSummaries()
     }
     
     private func setUpViews() {
@@ -164,6 +163,10 @@ final class AssetInfoViewController: UIViewController {
         
         mainContainer.isHidden = true
         errorLabel.isHidden = false
+    }
+    
+    func configure(_ asset: Asset) {
+        viewModel.downloadSummaries(of: asset)
     }
 
 }
