@@ -52,6 +52,8 @@ final class CreateWorldBankSummary: Operation, Inputtable, Resultable {
             return isCorrectISO3Code
         case .emergingMarketStocks:
             return isCorrectISO3Code && emergingMarkets.contains(entry.country.name)
+        case .frontierMarketStocks:
+            return isCorrectISO3Code && frontierMarkets.contains(entry.country.name)
         }
     }
     
@@ -332,4 +334,36 @@ private let emergingMarkets = [
     "Thailand",
     "Turkey",
     "United Arab Emirates"
+]
+
+// World Bank data is poor here
+private let frontierMarkets = [
+    "Bangladesh",
+    "Burkina faso",
+    "Bahrain",
+    "Benin",
+    "Ivory coast",
+    "Estonia",
+    "Guinea-bissau",
+    "Croatia",
+    "Jordan",
+    "Kenya",
+    "Kuwait",
+    "Kazakhstan",
+    "Lebanon",
+    "Sri lanka",
+    "Lithuania",
+    "Morocco",
+    "Mali",
+    "Mauritius",
+    "Niger",
+    "Nigeria",
+    "Oman",
+    "Romania",
+    "Serbia",
+    "Slovenia",
+    "Senegal",
+    "Togo",
+    "Tunisia",
+    "Vietnam"
 ]
