@@ -8,7 +8,7 @@ class CreateWorldBankSummaryTests: OperationTestCase {
     override func setUp() {
         super.setUp()
         
-        sut = CreateWorldBankSummary()
+        sut = CreateWorldBankSummary(asset: .globalStocks)
     }
 
     override func tearDown() {
@@ -45,6 +45,24 @@ class CreateWorldBankSummaryTests: OperationTestCase {
             XCTAssertEqual(summary.entries.last?.name, WorldBankCountry.small.name)
             XCTAssertEqual(summary.entries.last?.value, 10)
             XCTAssertEqual(summary.entries.last?.totalShare, Decimal(0.1))
+        }
+        
+        waitForExpectations()
+    }
+
+    func test_ShouldFilterCountryByName_WhenAssetIsEmergingMarketStocks() {
+        sut = CreateWorldBankSummary(asset: .emergingMarketStocks)
+        sut.inputData = .success(WorldBankResponse.sample)
+        let expectationToBeCalled = defaultExpectation
+        
+        setUpBlockExpectation(sut: sut) {
+            expectationToBeCalled.fulfill()
+            let summary = try! self.sut.result.get()
+            XCTAssertEqual(summary.entries.count, 1)
+
+            XCTAssertEqual(summary.entries.first?.name, WorldBankCountry.small.name)
+            XCTAssertEqual(summary.entries.first?.value, 10)
+            XCTAssertEqual(summary.entries.first?.totalShare, Decimal(1))
         }
         
         waitForExpectations()
@@ -108,11 +126,11 @@ private extension WorldBankResponse {
 private extension WorldBankCountry {
     
     static var small: WorldBankCountry {
-        return WorldBankCountry(id: "1", name: "Small country")
+        return WorldBankCountry(id: "1", name: "South Korea")
     }
     
     static var big: WorldBankCountry {
-        return WorldBankCountry(id: "2", name: "Big country")
+        return WorldBankCountry(id: "2", name: "Canada")
     }
     
     static var no: WorldBankCountry {

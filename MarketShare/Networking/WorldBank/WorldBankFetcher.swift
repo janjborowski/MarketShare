@@ -21,7 +21,7 @@ final class WorldBankFetcher: WorldBankFetcherProtocol {
     func download(asset: Asset, completion: @escaping (Summary?) -> Void) {
         let apiFetcher = APIFetcher(path: path, cache: cache)
         let worldBankMapper = MapWorldBankData()
-        let createWorldBankSummary = CreateWorldBankSummary()
+        let createWorldBankSummary = CreateWorldBankSummary(asset: asset)
         
         queue.succeed(operation: worldBankMapper, after: apiFetcher)
         queue.succeed(operation: createWorldBankSummary, after: worldBankMapper)

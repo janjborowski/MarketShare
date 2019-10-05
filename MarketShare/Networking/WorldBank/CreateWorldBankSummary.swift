@@ -2,9 +2,15 @@ import Foundation
 
 final class CreateWorldBankSummary: Operation, Inputtable, Resultable {
 
+    private let asset: Asset
+    
     var inputData: Result<WorldBankResponse, Error>?
     
     private(set) var result: Result<Summary, Error> = .noResult()
+    
+    init(asset: Asset) {
+        self.asset = asset
+    }
     
     override func main() {
         guard case let .success(inputData)? = inputData else {
@@ -12,8 +18,7 @@ final class CreateWorldBankSummary: Operation, Inputtable, Resultable {
             return
         }
         
-        let countries = inputData.entries.filter { countryCodes.contains($0.countryISO3Code) }
-        
+        let countries = inputData.entries.filter(filterByCodeAndAsset)
         let totalSum = countries
             .compactMap { Decimal($0.value ?? 0) }
             .reduce(Decimal(0), +)
@@ -38,6 +43,16 @@ final class CreateWorldBankSummary: Operation, Inputtable, Resultable {
         }
         
         result = .failure(error)
+    }
+    
+    private func filterByCodeAndAsset(_ entry: WorldBankEntry) -> Bool {
+        let isCorrectISO3Code = countryCodes.contains(entry.countryISO3Code)
+        switch asset {
+        case .globalStocks:
+            return isCorrectISO3Code
+        case .emergingMarketStocks:
+            return isCorrectISO3Code && emergingMarkets.contains(entry.country.name)
+        }
     }
     
 }
@@ -289,4 +304,32 @@ private let countryCodes = [
     "ZAF",
     "ZMB",
     "ZWE"
+]
+
+private let emergingMarkets = [
+    "Brazil",
+    "Chile",
+    "China",
+    "Colombia",
+    "Czech Republic",
+    "Egypt",
+    "Greece",
+    "Hungary",
+    "India",
+    "Indonesia",
+    "Korea",
+    "Malaysia",
+    "Mexico",
+    "Morocco",
+    "Qatar",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Russia",
+    "South Africa",
+    "South Korea",
+    "Taiwan",
+    "Thailand",
+    "Turkey",
+    "United Arab Emirates"
 ]
