@@ -2,23 +2,23 @@ import Foundation
 
 final class APIFetcher: AsynchronousOperation, Resultable {
     
-    private let path: String
     private let cache: NetworkingCache
     
     private let session = URLSession.shared
     
     var headers = [String: String]()
+    var path: String?
 
     private(set) var result: Result<Data, Error> = .noResult()
     
-    init(path: String, cache: NetworkingCache) {
-        self.path = path
+    init(cache: NetworkingCache) {
         self.cache = cache
         super.init()
     }
     
     override func main() {
-        guard let url = URL(string: path) else {
+        guard let path = path,
+            let url = URL(string: path) else {
             finish(with: APIError.wrongPath)
             return
         }

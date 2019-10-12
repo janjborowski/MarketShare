@@ -2,21 +2,21 @@ import Foundation
 
 final class RunCryptoPipeline: AsynchronousOperation, Resultable {
     
-    private let queue = OperationQueue()
-    private let cache: NetworkingCache
+    private let queue: OperationQueue
+    private let operationProvider: CryptoPipelineOperationProvider
     private let asset: Asset
     
     private(set) var result: Result<Summary, Error> = .noResult()
     
-    init(cache: NetworkingCache, asset: Asset) {
+    init(queue: OperationQueue, operationProvider: CryptoPipelineOperationProvider, asset: Asset) {
+        self.queue = queue
         self.asset = asset
-        self.cache = cache
-        queue.qualityOfService = .userInitiated
+        self.operationProvider = operationProvider
     }
     
     override func main() {
         let apiFetcher = createAPIFetcher()
-        let cryptoSummary = CreateCryptoSummary(asset: asset)
+        let cryptoSummary = operationProvider.createCryptoSummary(asset: asset)
         
         queue.succeed(operation: cryptoSummary, after: apiFetcher)
         queue.succeed(operation: cryptoSummary) { [weak self] _ in
@@ -28,8 +28,8 @@ final class RunCryptoPipeline: AsynchronousOperation, Resultable {
     }
     
     private func createAPIFetcher() -> APIFetcher {
-        let path = createAPIPath() ?? ""
-        let apiFetcher = APIFetcher(path: path, cache: cache)
+        let apiFetcher = operationProvider.apiFetcher()
+        apiFetcher.path = createAPIPath()
         apiFetcher.headers = createAPIHeaders()
         return apiFetcher
     }

@@ -27,9 +27,20 @@ final class AppContainer {
             return PersistentNetworkingCache()
         }
         
+        container.register(CryptoPipelineOperationProvider.self) { (resolver) -> CryptoPipelineOperationProvider in
+            let networkingCache = resolver.resolve(NetworkingCache.self)!
+            return CryptoPipelineOperationProviderDefault(cache: networkingCache)
+        }
+        
         container.register(FetcherDispatcher.self) { (resolver) -> FetcherDispatcher in
             let networkingCache = resolver.resolve(NetworkingCache.self)!
-            return FetcherDispatcherDefault(cache: networkingCache)
+            return FetcherDispatcherDefault(
+                cache: networkingCache,
+                createCryptoPipeline: { (queue, asset) -> RunCryptoPipeline in
+                    let provider = resolver.resolve(CryptoPipelineOperationProvider.self)!
+                    return RunCryptoPipeline(queue: queue, operationProvider: provider, asset: asset)
+                }
+            )
         }
     }
     

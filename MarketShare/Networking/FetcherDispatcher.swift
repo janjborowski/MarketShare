@@ -11,8 +11,11 @@ final class FetcherDispatcherDefault: FetcherDispatcher {
     private let queue = OperationQueue()
     private let cache: NetworkingCache
     
-    init(cache: NetworkingCache) {
+    private let createCryptoPipeline: (OperationQueue, Asset) -> RunCryptoPipeline
+    
+    init(cache: NetworkingCache, createCryptoPipeline: @escaping (OperationQueue, Asset) -> RunCryptoPipeline) {
         self.cache = cache
+        self.createCryptoPipeline = createCryptoPipeline
         queue.qualityOfService = .userInitiated
     }
     
@@ -32,7 +35,7 @@ final class FetcherDispatcherDefault: FetcherDispatcher {
     }
     
     private func createCoinMarketCapPipeline(asset: Asset, completion: @escaping (Summary?) -> Void) {
-        let cryptoPipeline = RunCryptoPipeline(cache: cache, asset: asset)
+        let cryptoPipeline = createCryptoPipeline(queue, asset)
         queue.succeed(operation: cryptoPipeline, with: completion)
         queue.addOperation(cryptoPipeline)
     }

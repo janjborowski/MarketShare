@@ -17,7 +17,8 @@ final class WorldBankFetcher: AsynchronousOperation, Resultable {
     }
     
     override func main() {
-        let apiFetcher = APIFetcher(path: path, cache: cache)
+        let apiFetcher = APIFetcher(cache: cache)
+        apiFetcher.path = path
         let worldBankMapper = MapWorldBankData()
         let createWorldBankSummary = CreateWorldBankSummary(asset: asset)
         

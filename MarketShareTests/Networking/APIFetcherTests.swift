@@ -4,21 +4,6 @@ import OHHTTPStubs
 
 class APIFetcherTests: OperationTestCase {
     
-    private final class NetworkingCacheMock: NetworkingCache {
-        
-        var retrievableData: Data?
-        var saveWasCalled = false
-        
-        func retrieveData(for request: URLRequest) -> Data? {
-            return retrievableData
-        }
-        
-        func save(response: URLResponse, data: Data, for request: URLRequest) {
-            saveWasCalled = true
-        }
-        
-    }
-    
     private let path = "http://someapi.com"
     
     private var networkingCache: NetworkingCacheMock!
@@ -28,7 +13,8 @@ class APIFetcherTests: OperationTestCase {
         super.setUp()
         
         networkingCache = NetworkingCacheMock()
-        sut = APIFetcher(path: path, cache: networkingCache)
+        sut = APIFetcher(cache: networkingCache)
+        sut.path = path
     }
 
     override func tearDown() {
@@ -76,7 +62,7 @@ class APIFetcherTests: OperationTestCase {
     
     func test_ShouldFinishWithAPIError_WhenPathIsWrong() {
         let expectationToBeCalled = defaultExpectation
-        sut = APIFetcher(path: "", cache: networkingCache)
+        sut = APIFetcher(cache: networkingCache)
         
         setUpBlockExpectation(sut: sut) {
             expectationToBeCalled.fulfill()
