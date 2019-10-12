@@ -54,6 +54,25 @@ class APIFetcherTests: OperationTestCase {
         
         waitForExpectations()
     }
+
+    func test_ShouldPassHeaders() {
+        let expectationToBeCalled = defaultExpectation
+        let customHeaderKey = "headerKey"
+        let customHeaderValue = "headerValue"
+        sut.headers = [customHeaderKey: customHeaderValue]
+
+        stub(condition: isAbsoluteURLString(path) && hasHeaderNamed(customHeaderKey, value: customHeaderValue)) { response in
+            let stubPath = OHPathForFile("worldbankresponse.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type":"application/json"])
+        }
+        
+        setUpBlockExpectation(sut: sut) {
+            expectationToBeCalled.fulfill()
+            XCTAssertNotNil(try! self.sut.result.get())
+        }
+        
+        waitForExpectations()
+    }
     
     func test_ShouldFinishWithAPIError_WhenPathIsWrong() {
         let expectationToBeCalled = defaultExpectation

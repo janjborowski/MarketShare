@@ -6,6 +6,8 @@ final class APIFetcher: AsynchronousOperation, Resultable {
     private let cache: NetworkingCache
     
     private let session = URLSession.shared
+    
+    var headers = [String: String]()
 
     private(set) var result: Result<Data, Error> = .noResult()
     
@@ -21,7 +23,8 @@ final class APIFetcher: AsynchronousOperation, Resultable {
             return
         }
         
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = headers
         if let data = cache.retrieveData(for: request) {
             finish(with: data)
         } else {

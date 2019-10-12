@@ -27,9 +27,9 @@ final class AppContainer {
             return PersistentNetworkingCache()
         }
         
-        container.register(WorldBankFetcherProtocol.self) { (resolver) -> WorldBankFetcherProtocol in
+        container.register(FetcherDispatcher.self) { (resolver) -> FetcherDispatcher in
             let networkingCache = resolver.resolve(NetworkingCache.self)!
-            return WorldBankFetcher(cache: networkingCache)
+            return FetcherDispatcherDefault(cache: networkingCache)
         }
     }
     
@@ -39,16 +39,14 @@ final class AppContainer {
         }
         
         container.register(AssetInfoViewModelProtocol.self) { (resolver) -> AssetInfoViewModelProtocol in
-            let worldBankFetcher = resolver.resolve(WorldBankFetcherProtocol.self)!
-            return AssetInfoViewModel(worldBankFetcher: worldBankFetcher)
+            let fetcherDispatcher = resolver.resolve(FetcherDispatcher.self)!
+            return AssetInfoViewModel(fetcherDispatcher: fetcherDispatcher)
         }
     }
     
     private func registerControllers() {
         container.register(AssetListViewController.self) { (resolver) -> AssetListViewController in
             let viewModel = resolver.resolve(AssetListViewModelProtocol.self)!
-//            let flowController = AssetListViewControllerFlowController { self.create()! }
-            
             let flowController = AssetListViewControllerFlowController(
                 infoViewControllerFetcher: { self.create()! },
                 listViewControllerFetcher: { self.create()! }

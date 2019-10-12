@@ -54,6 +54,8 @@ final class CreateWorldBankSummary: Operation, Inputtable, Resultable {
             return isCorrectISO3Code && emergingMarkets.contains(entry.country.name)
         case .frontierMarketStocks:
             return isCorrectISO3Code && frontierMarkets.contains(entry.country.name)
+        default:
+            return false
         }
     }
     

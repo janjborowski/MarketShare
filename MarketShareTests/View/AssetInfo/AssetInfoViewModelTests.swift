@@ -3,7 +3,7 @@ import XCTest
 
 class AssetInfoViewModelTests: XCTestCase {
 
-    private final class WorldBankFetcherMock: WorldBankFetcherProtocol {
+    private final class FetcherDispatcherMock: FetcherDispatcher {
     
         var summary: Summary?
         var mock_download: ((Asset) -> ())?
@@ -15,18 +15,18 @@ class AssetInfoViewModelTests: XCTestCase {
         
     }
     
-    private var worldBankFetcher: WorldBankFetcherMock!
+    private var fetcherDispatcherMock: FetcherDispatcherMock!
     private var sut: AssetInfoViewModel!
     
     override func setUp() {
         super.setUp()
         
-        worldBankFetcher = WorldBankFetcherMock()
-        sut = AssetInfoViewModel(worldBankFetcher: worldBankFetcher)
+        fetcherDispatcherMock = FetcherDispatcherMock()
+        sut = AssetInfoViewModel(fetcherDispatcher: fetcherDispatcherMock)
     }
 
     override func tearDown() {
-        worldBankFetcher = nil
+        fetcherDispatcherMock = nil
         sut = nil
         
         super.tearDown()
@@ -34,7 +34,7 @@ class AssetInfoViewModelTests: XCTestCase {
 
     func testDownloadSummaries_ShouldCreateCellViewModels_WhenDataIsFetched() {
         let firstEntry = Summary.tests_sample.entries.first!
-        worldBankFetcher.summary = .tests_sample
+        fetcherDispatcherMock.summary = .tests_sample
         
         sut.downloadSummaries(of: .globalStocks)
         
@@ -47,7 +47,7 @@ class AssetInfoViewModelTests: XCTestCase {
     }
     
     func testDownloadSummaries_ShouldCreateTenPieChartEntries_AndOtherOne_WhenThereAreManyEntries() {
-        worldBankFetcher.summary = .tests_huge
+        fetcherDispatcherMock.summary = .tests_huge
         
         sut.downloadSummaries(of: .globalStocks)
         
@@ -68,7 +68,7 @@ class AssetInfoViewModelTests: XCTestCase {
     func testDownloadSummaries_ShouldPassAssetType() {
         let inputAsset = Asset.emergingMarketStocks
         let exp = defaultExpectation
-        worldBankFetcher.mock_download = { asset in
+        fetcherDispatcherMock.mock_download = { asset in
             exp.fulfill()
             XCTAssertEqual(asset, inputAsset)
         }

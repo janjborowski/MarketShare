@@ -21,18 +21,18 @@ enum AssetInfoViewModelState {
 final class AssetInfoViewModel: AssetInfoViewModelProtocol {
     
     private var summary: Summary = Summary(name: "", entries: [])
-    private let worldBankFetcher: WorldBankFetcherProtocol
+    private let fetcherDispatcher: FetcherDispatcher
     
     let state = Observable(value: AssetInfoViewModelState.loading)
     private(set) var cellViewModels = [AssetInfoCellViewModel]()
     private(set) var pieChartEntries = [PieChartDataEntry]()
     
-    init(worldBankFetcher: WorldBankFetcherProtocol) {
-        self.worldBankFetcher = worldBankFetcher
+    init(fetcherDispatcher: FetcherDispatcher) {
+        self.fetcherDispatcher = fetcherDispatcher
     }
     
     func downloadSummaries(of asset: Asset) {
-        worldBankFetcher.download(asset: asset) { [weak self] (summary) in
+        fetcherDispatcher.download(asset: asset) { [weak self] (summary) in
             guard let summary = summary,
                 let weakSelf = self else {
                 self?.state.update(value: .error)
