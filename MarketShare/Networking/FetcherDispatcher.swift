@@ -8,15 +8,20 @@ protocol FetcherDispatcher {
 
 final class FetcherDispatcherDefault: FetcherDispatcher {
     
-    private let queue = OperationQueue()
-    private let cache: NetworkingCache
+    public typealias CryptoProvider = (OperationQueue, Asset) -> RunCryptoPipeline
+    public typealias WorldBankProvider = (OperationQueue, Asset) -> RunWorldBankPipeline
     
-    private let createCryptoPipeline: (OperationQueue, Asset) -> RunCryptoPipeline
+    private let queue: OperationQueue
     
-    init(cache: NetworkingCache, createCryptoPipeline: @escaping (OperationQueue, Asset) -> RunCryptoPipeline) {
-        self.cache = cache
+    private let createCryptoPipeline: CryptoProvider
+    private let createWorldBankPipeline: WorldBankProvider
+    
+    init(queue: OperationQueue,
+        createCryptoPipeline: @escaping CryptoProvider,
+         createWorldBankPipeline: @escaping WorldBankProvider) {
+        self.queue = queue
         self.createCryptoPipeline = createCryptoPipeline
-        queue.qualityOfService = .userInitiated
+        self.createWorldBankPipeline = createWorldBankPipeline
     }
     
     func download(asset: Asset, completion: @escaping (Summary?) -> Void) {
@@ -29,7 +34,7 @@ final class FetcherDispatcherDefault: FetcherDispatcher {
     }
     
     private func createWorldBankPipeline(asset: Asset, completion: @escaping (Summary?) -> Void) {
-        let worldBankFetcher = WorldBankFetcher(cache: cache, asset: asset)
+        let worldBankFetcher = createWorldBankPipeline(queue, asset)
         queue.succeed(operation: worldBankFetcher, with: completion)
         queue.addOperation(worldBankFetcher)
     }

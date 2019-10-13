@@ -1,24 +1,7 @@
 import XCTest
 @testable import MarketShare
 
-class RunCryptoPipelineTests: XCTestCase {
-    
-    private final class CryptoPipelineOperationProviderMock: CryptoPipelineOperationProvider {
-        
-        var savedAPIFetcher: APIFetcher!
-        var savedCreateCryptoSummary: CreateCryptoSummary!
-        
-        func apiFetcher() -> APIFetcher {
-            savedAPIFetcher = APIFetcher(cache: NetworkingCacheMock())
-            return savedAPIFetcher
-        }
-        
-        func createCryptoSummary(asset: Asset) -> CreateCryptoSummary {
-            savedCreateCryptoSummary = CreateCryptoSummary(asset: asset)
-            return savedCreateCryptoSummary
-        }
-        
-    }
+final class RunCryptoPipelineTests: XCTestCase {
     
     private var operationQueue: OperationQueue!
     private var provider: CryptoPipelineOperationProviderMock!

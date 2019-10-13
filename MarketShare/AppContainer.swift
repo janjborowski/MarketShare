@@ -32,13 +32,21 @@ final class AppContainer {
             return CryptoPipelineOperationProviderDefault(cache: networkingCache)
         }
         
-        container.register(FetcherDispatcher.self) { (resolver) -> FetcherDispatcher in
+        container.register(WorldBankPipelineOperationProvider.self) { (resolver) -> WorldBankPipelineOperationProvider in
             let networkingCache = resolver.resolve(NetworkingCache.self)!
+            return WorldBankPipelineOperationProviderDefault(cache: networkingCache)
+        }
+        
+        container.register(FetcherDispatcher.self) { (resolver) -> FetcherDispatcher in
             return FetcherDispatcherDefault(
-                cache: networkingCache,
+                queue: OperationQueue(),
                 createCryptoPipeline: { (queue, asset) -> RunCryptoPipeline in
                     let provider = resolver.resolve(CryptoPipelineOperationProvider.self)!
                     return RunCryptoPipeline(queue: queue, operationProvider: provider, asset: asset)
+                },
+                createWorldBankPipeline: { (queue, asset) -> RunWorldBankPipeline in
+                    let provider = resolver.resolve(WorldBankPipelineOperationProvider.self)!
+                    return RunWorldBankPipeline(queue: queue, operationProvider: provider, asset: asset)
                 }
             )
         }
