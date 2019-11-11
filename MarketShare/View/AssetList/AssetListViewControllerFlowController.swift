@@ -26,6 +26,7 @@ final class AssetListViewControllerFlowController: AssetListViewControllerFlowCo
             sourceController.navigationController?.pushViewController(infoViewController, animated: true)
         case .group(let cells):
             let listViewController = listViewControllerFetcher()
+            listViewController.navigationItem.largeTitleDisplayMode = .never
             listViewController.configure(cells: cells, name: cellModel.name)
             sourceController.navigationController?.pushViewController(listViewController, animated: true)
         }

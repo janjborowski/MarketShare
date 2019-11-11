@@ -167,6 +167,7 @@ final class AssetInfoViewController: UIViewController {
     
     func configure(_ asset: Asset) {
         viewModel.downloadSummaries(of: asset)
+        title = viewModel.title
     }
 
 }

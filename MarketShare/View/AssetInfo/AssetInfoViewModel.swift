@@ -3,6 +3,7 @@ import Charts
 protocol AssetInfoViewModelProtocol {
     
     var state: Observable<AssetInfoViewModelState> { get }
+    var title: String { get }
     var cellViewModels: [AssetInfoCellViewModel] { get }
     var pieChartEntries: [PieChartDataEntry] { get }
     
@@ -26,12 +27,14 @@ final class AssetInfoViewModel: AssetInfoViewModelProtocol {
     let state = Observable(value: AssetInfoViewModelState.loading)
     private(set) var cellViewModels = [AssetInfoCellViewModel]()
     private(set) var pieChartEntries = [PieChartDataEntry]()
+    private(set) var title: String = ""
     
     init(fetcherDispatcher: FetcherDispatcher) {
         self.fetcherDispatcher = fetcherDispatcher
     }
     
     func downloadSummaries(of asset: Asset) {
+        title = asset.name
         fetcherDispatcher.download(asset: asset) { [weak self] (summary) in
             guard let summary = summary,
                 let weakSelf = self else {

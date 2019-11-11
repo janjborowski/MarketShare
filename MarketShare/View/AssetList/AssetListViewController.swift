@@ -19,8 +19,6 @@ final class AssetListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        
-        navigationItem.largeTitleDisplayMode = .automatic
     }
     
     private func setUpTableView() {

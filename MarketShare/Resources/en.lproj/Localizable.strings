@@ -2,3 +2,13 @@
 "data_cannot_be_fetched" = "Data cannot be fetched";
 
 "others" = "Others";
+
+"global_stocks" = "Global stocks";
+
+"emerging_stocks" = "Emerging markets";
+
+"frontier_stocks" = "Frontier markets";
+
+"all_crypto" = "All crypto";
+
+"crypto_ex_btc" = "Crypto ex. BTC";
