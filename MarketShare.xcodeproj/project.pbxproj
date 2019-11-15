@@ -1,0 +1,1013 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F20C50E723084493007A8F56 /* MapWorldBankDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20C50E623084493007A8F56 /* MapWorldBankDataTests.swift */; };
+		F20C50E923084902007A8F56 /* OperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20C50E823084902007A8F56 /* OperationTestCase.swift */; };
+		F20C50EB230956C5007A8F56 /* CreateWorldBankSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20C50EA230956C5007A8F56 /* CreateWorldBankSummary.swift */; };
+		F20C50EE230956F7007A8F56 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20C50ED230956F7007A8F56 /* Summary.swift */; };
+		F20C50F023095728007A8F56 /* SummaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20C50EF23095728007A8F56 /* SummaryEntry.swift */; };
+		F20C50F223095AAD007A8F56 /* CreateWorldBankSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20C50F123095AAD007A8F56 /* CreateWorldBankSummaryTests.swift */; };
+		F21CBA512313EFF400961FB5 /* NetworkingCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CBA502313EFF400961FB5 /* NetworkingCache.swift */; };
+		F21CBA532313F04A00961FB5 /* PersistentNetworkingCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21CBA522313F04A00961FB5 /* PersistentNetworkingCache.swift */; };
+		F242691B2349FD820006CA65 /* RunCryptoPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242691A2349FD820006CA65 /* RunCryptoPipeline.swift */; };
+		F242691E234A00410006CA65 /* FetcherDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242691D234A00410006CA65 /* FetcherDispatcher.swift */; };
+		F2426920234A047C0006CA65 /* CoinMarketCapResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242691F234A047C0006CA65 /* CoinMarketCapResponse.swift */; };
+		F2426922234A04CC0006CA65 /* CoinTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2426921234A04CC0006CA65 /* CoinTicker.swift */; };
+		F2426924234A052D0006CA65 /* CreateCryptoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2426923234A052D0006CA65 /* CreateCryptoSummary.swift */; };
+		F2426926234A07100006CA65 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2426925234A07100006CA65 /* Quote.swift */; };
+		F242692B234A79970006CA65 /* CreateCryptoSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242692A234A79970006CA65 /* CreateCryptoSummaryTests.swift */; };
+		F287782023080D0100E3C4DC /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2CA4F392307F95300DE91C6 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2877823230813B900E3C4DC /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2877822230813B900E3C4DC /* XCTestCase+Utils.swift */; };
+		F2953DB42351DF8E0049ABB8 /* coinmarketcapresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = F2953DB32351DF8E0049ABB8 /* coinmarketcapresponse.json */; };
+		F2953DB92351F79D0049ABB8 /* CryptoPipelineOperationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DB82351F79D0049ABB8 /* CryptoPipelineOperationProvider.swift */; };
+		F2953DBB235204750049ABB8 /* RunCryptoPipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DBA235204750049ABB8 /* RunCryptoPipelineTests.swift */; };
+		F2953DBF2352055F0049ABB8 /* NetworkingCacheMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DBE2352055F0049ABB8 /* NetworkingCacheMock.swift */; };
+		F2953DC123520B520049ABB8 /* WorldBankPipelineOperationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DC023520B520049ABB8 /* WorldBankPipelineOperationProvider.swift */; };
+		F2953DC323533B140049ABB8 /* FetcherDispatcherDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DC223533B140049ABB8 /* FetcherDispatcherDefaultTests.swift */; };
+		F2953DC623533DEC0049ABB8 /* CoinMarketCapOperationProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DC523533DEC0049ABB8 /* CoinMarketCapOperationProviderMock.swift */; };
+		F2953DC923533E610049ABB8 /* WorldBankPipelineOperationProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DC823533E610049ABB8 /* WorldBankPipelineOperationProviderMock.swift */; };
+		F2953DCB235354D60049ABB8 /* RunWorldBankPipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2953DCA235354D60049ABB8 /* RunWorldBankPipelineTests.swift */; };
+		F2A2BD82231105140075B5BB /* AssetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD81231105140075B5BB /* AssetInfoViewController.swift */; };
+		F2A2BD84231107350075B5BB /* AssetInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD83231107350075B5BB /* AssetInfoViewModel.swift */; };
+		F2A2BD862311079F0075B5BB /* RunWorldBankPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD852311079F0075B5BB /* RunWorldBankPipeline.swift */; };
+		F2A2BD8823110CD90075B5BB /* AssetListViewControllerFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD8723110CD90075B5BB /* AssetListViewControllerFlowController.swift */; };
+		F2A2BD8A231110D80075B5BB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD89231110D80075B5BB /* Observable.swift */; };
+		F2A2BD8C231112650075B5BB /* AssetInfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD8B231112650075B5BB /* AssetInfoCellViewModel.swift */; };
+		F2A2BD8F231116DE0075B5BB /* AssetInfoCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD8E231116DE0075B5BB /* AssetInfoCellViewModelTests.swift */; };
+		F2A2BD91231118270075B5BB /* AssetInfoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD90231118270075B5BB /* AssetInfoViewModelTests.swift */; };
+		F2A2BD9523112E290075B5BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2A2BD9723112E290075B5BB /* Localizable.strings */; };
+		F2A2BD9923112EAC0075B5BB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A2BD9823112EAC0075B5BB /* String+Localized.swift */; };
+		F2A2BD9B231262660075B5BB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A2BD9A231262660075B5BB /* Charts.framework */; };
+		F2B033E12300354800CA904F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B033E02300354800CA904F /* LaunchScreen.storyboard */; };
+		F2B033E32300357A00CA904F /* AssetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033E22300357A00CA904F /* AssetListViewController.swift */; };
+		F2B033E5230036FC00CA904F /* AssetListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033E4230036FC00CA904F /* AssetListCell.swift */; };
+		F2B033E8230038AE00CA904F /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B033E62300388E00CA904F /* SnapshotTesting.framework */; };
+		F2B033EC2300391000CA904F /* AssetListCellSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033EB2300391000CA904F /* AssetListCellSnapshotTest.swift */; };
+		F2B033EE23003A9200CA904F /* SnapshotTesting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2B033E62300388E00CA904F /* SnapshotTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2B033F023003B6F00CA904F /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033EF23003B6F00CA904F /* Styling.swift */; };
+		F2B033F323003D2600CA904F /* UIView+DisableOldLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033F223003D2600CA904F /* UIView+DisableOldLayout.swift */; };
+		F2B033F52300457900CA904F /* AssetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033F42300457900CA904F /* AssetListViewModel.swift */; };
+		F2B033F7230045E900CA904F /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033F6230045E900CA904F /* AppContainer.swift */; };
+		F2B033FA2300476300CA904F /* AssetListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033F92300476300CA904F /* AssetListCellModel.swift */; };
+		F2B033FE2300497100CA904F /* MapWorldBankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033FD2300497100CA904F /* MapWorldBankData.swift */; };
+		F2B03400230049AA00CA904F /* APIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B033FF230049AA00CA904F /* APIFetcher.swift */; };
+		F2B0340223004B0D00CA904F /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0340123004B0D00CA904F /* APIError.swift */; };
+		F2B08175233F551700028554 /* PersistentNetworkingCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B08174233F551700028554 /* PersistentNetworkingCacheTests.swift */; };
+		F2B08177233F5B2400028554 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B08176233F5B2400028554 /* Asset.swift */; };
+		F2B08179233F64B800028554 /* Result+NoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B08178233F64B800028554 /* Result+NoResult.swift */; };
+		F2B0817B2340C0C500028554 /* Result+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0817A2340C0C500028554 /* Result+Error.swift */; };
+		F2B0817D2340C29A00028554 /* Inputtable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0817C2340C29A00028554 /* Inputtable.swift */; };
+		F2B0817F2340C2BF00028554 /* Resultable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0817E2340C2BF00028554 /* Resultable.swift */; };
+		F2B081822340C30A00028554 /* OperationQueue+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B081812340C30A00028554 /* OperationQueue+Chaining.swift */; };
+		F2B081852340CB0300028554 /* OperationQueueChainingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B081842340CB0300028554 /* OperationQueueChainingTests.swift */; };
+		F2CA4F382307F79700DE91C6 /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F372307F79700DE91C6 /* AsynchronousOperation.swift */; };
+		F2CA4F3A2307F95300DE91C6 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CA4F392307F95300DE91C6 /* OHHTTPStubs.framework */; };
+		F2CA4F3C230806BF00DE91C6 /* worldbankresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = F2CA4F3B230806BF00DE91C6 /* worldbankresponse.json */; };
+		F2CA4F3F230806F000DE91C6 /* WorldBankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F3E230806F000DE91C6 /* WorldBankResponse.swift */; };
+		F2CA4F412308071A00DE91C6 /* WorldBankPaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F402308071A00DE91C6 /* WorldBankPaging.swift */; };
+		F2CA4F432308085700DE91C6 /* WorldBankEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F422308085700DE91C6 /* WorldBankEntry.swift */; };
+		F2CA4F452308088900DE91C6 /* WorldBankCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F442308088900DE91C6 /* WorldBankCountry.swift */; };
+		F2CA4F472308091C00DE91C6 /* WorldBankIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F462308091B00DE91C6 /* WorldBankIndicator.swift */; };
+		F2CA4F4923080A6D00DE91C6 /* APIFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CA4F4823080A6D00DE91C6 /* APIFetcherTests.swift */; };
+		F2DD75262379A93E0052B5CB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F2DD75252379A93E0052B5CB /* README.md */; };
+		F2EB3D8B22FEC1E2001ABB43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EB3D8A22FEC1E2001ABB43 /* AppDelegate.swift */; };
+		F2EB3D9222FEC1E3001ABB43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2EB3D9122FEC1E3001ABB43 /* Assets.xcassets */; };
+		F2EB3DAB22FEC281001ABB43 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = F2EB3DAA22FEC281001ABB43 /* Cartfile */; };
+		F2F1AA6722FEC57E0037DF64 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F1AA6622FEC57E0037DF64 /* Swinject.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2EB3D9C22FEC1E3001ABB43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2EB3D7F22FEC1E2001ABB43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2EB3D8622FEC1E2001ABB43;
+			remoteInfo = MarketShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F2B033ED23003A8600CA904F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F287782023080D0100E3C4DC /* OHHTTPStubs.framework in CopyFiles */,
+				F2B033EE23003A9200CA904F /* SnapshotTesting.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F20C50E623084493007A8F56 /* MapWorldBankDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorldBankDataTests.swift; sourceTree = "<group>"; };
+		F20C50E823084902007A8F56 /* OperationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTestCase.swift; sourceTree = "<group>"; };
+		F20C50EA230956C5007A8F56 /* CreateWorldBankSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorldBankSummary.swift; sourceTree = "<group>"; };
+		F20C50ED230956F7007A8F56 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
+		F20C50EF23095728007A8F56 /* SummaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryEntry.swift; sourceTree = "<group>"; };
+		F20C50F123095AAD007A8F56 /* CreateWorldBankSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorldBankSummaryTests.swift; sourceTree = "<group>"; };
+		F21CBA502313EFF400961FB5 /* NetworkingCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingCache.swift; sourceTree = "<group>"; };
+		F21CBA522313F04A00961FB5 /* PersistentNetworkingCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentNetworkingCache.swift; sourceTree = "<group>"; };
+		F242691A2349FD820006CA65 /* RunCryptoPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCryptoPipeline.swift; sourceTree = "<group>"; };
+		F242691D234A00410006CA65 /* FetcherDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherDispatcher.swift; sourceTree = "<group>"; };
+		F242691F234A047C0006CA65 /* CoinMarketCapResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapResponse.swift; sourceTree = "<group>"; };
+		F2426921234A04CC0006CA65 /* CoinTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTicker.swift; sourceTree = "<group>"; };
+		F2426923234A052D0006CA65 /* CreateCryptoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCryptoSummary.swift; sourceTree = "<group>"; };
+		F2426925234A07100006CA65 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		F242692A234A79970006CA65 /* CreateCryptoSummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCryptoSummaryTests.swift; sourceTree = "<group>"; };
+		F2877822230813B900E3C4DC /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
+		F2953DB32351DF8E0049ABB8 /* coinmarketcapresponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = coinmarketcapresponse.json; sourceTree = "<group>"; };
+		F2953DB82351F79D0049ABB8 /* CryptoPipelineOperationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPipelineOperationProvider.swift; sourceTree = "<group>"; };
+		F2953DBA235204750049ABB8 /* RunCryptoPipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCryptoPipelineTests.swift; sourceTree = "<group>"; };
+		F2953DBE2352055F0049ABB8 /* NetworkingCacheMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingCacheMock.swift; sourceTree = "<group>"; };
+		F2953DC023520B520049ABB8 /* WorldBankPipelineOperationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankPipelineOperationProvider.swift; sourceTree = "<group>"; };
+		F2953DC223533B140049ABB8 /* FetcherDispatcherDefaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherDispatcherDefaultTests.swift; sourceTree = "<group>"; };
+		F2953DC523533DEC0049ABB8 /* CoinMarketCapOperationProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapOperationProviderMock.swift; sourceTree = "<group>"; };
+		F2953DC823533E610049ABB8 /* WorldBankPipelineOperationProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankPipelineOperationProviderMock.swift; sourceTree = "<group>"; };
+		F2953DCA235354D60049ABB8 /* RunWorldBankPipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunWorldBankPipelineTests.swift; sourceTree = "<group>"; };
+		F2A2BD81231105140075B5BB /* AssetInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfoViewController.swift; sourceTree = "<group>"; };
+		F2A2BD83231107350075B5BB /* AssetInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfoViewModel.swift; sourceTree = "<group>"; };
+		F2A2BD852311079F0075B5BB /* RunWorldBankPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunWorldBankPipeline.swift; sourceTree = "<group>"; };
+		F2A2BD8723110CD90075B5BB /* AssetListViewControllerFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewControllerFlowController.swift; sourceTree = "<group>"; };
+		F2A2BD89231110D80075B5BB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F2A2BD8B231112650075B5BB /* AssetInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfoCellViewModel.swift; sourceTree = "<group>"; };
+		F2A2BD8E231116DE0075B5BB /* AssetInfoCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfoCellViewModelTests.swift; sourceTree = "<group>"; };
+		F2A2BD90231118270075B5BB /* AssetInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfoViewModelTests.swift; sourceTree = "<group>"; };
+		F2A2BD9623112E290075B5BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F2A2BD9823112EAC0075B5BB /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		F2A2BD9A231262660075B5BB /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		F2B033E02300354800CA904F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F2B033E22300357A00CA904F /* AssetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewController.swift; sourceTree = "<group>"; };
+		F2B033E4230036FC00CA904F /* AssetListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListCell.swift; sourceTree = "<group>"; };
+		F2B033E62300388E00CA904F /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
+		F2B033EB2300391000CA904F /* AssetListCellSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListCellSnapshotTest.swift; sourceTree = "<group>"; };
+		F2B033EF23003B6F00CA904F /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		F2B033F223003D2600CA904F /* UIView+DisableOldLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DisableOldLayout.swift"; sourceTree = "<group>"; };
+		F2B033F42300457900CA904F /* AssetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewModel.swift; sourceTree = "<group>"; };
+		F2B033F6230045E900CA904F /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		F2B033F92300476300CA904F /* AssetListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListCellModel.swift; sourceTree = "<group>"; };
+		F2B033FD2300497100CA904F /* MapWorldBankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorldBankData.swift; sourceTree = "<group>"; };
+		F2B033FF230049AA00CA904F /* APIFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFetcher.swift; sourceTree = "<group>"; };
+		F2B0340123004B0D00CA904F /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F2B08174233F551700028554 /* PersistentNetworkingCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentNetworkingCacheTests.swift; sourceTree = "<group>"; };
+		F2B08176233F5B2400028554 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		F2B08178233F64B800028554 /* Result+NoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+NoResult.swift"; sourceTree = "<group>"; };
+		F2B0817A2340C0C500028554 /* Result+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Error.swift"; sourceTree = "<group>"; };
+		F2B0817C2340C29A00028554 /* Inputtable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputtable.swift; sourceTree = "<group>"; };
+		F2B0817E2340C2BF00028554 /* Resultable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resultable.swift; sourceTree = "<group>"; };
+		F2B081812340C30A00028554 /* OperationQueue+Chaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+Chaining.swift"; sourceTree = "<group>"; };
+		F2B081842340CB0300028554 /* OperationQueueChainingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueueChainingTests.swift; sourceTree = "<group>"; };
+		F2CA4F372307F79700DE91C6 /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
+		F2CA4F392307F95300DE91C6 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		F2CA4F3B230806BF00DE91C6 /* worldbankresponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = worldbankresponse.json; sourceTree = "<group>"; };
+		F2CA4F3E230806F000DE91C6 /* WorldBankResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankResponse.swift; sourceTree = "<group>"; };
+		F2CA4F402308071A00DE91C6 /* WorldBankPaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankPaging.swift; sourceTree = "<group>"; };
+		F2CA4F422308085700DE91C6 /* WorldBankEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankEntry.swift; sourceTree = "<group>"; };
+		F2CA4F442308088900DE91C6 /* WorldBankCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankCountry.swift; sourceTree = "<group>"; };
+		F2CA4F462308091B00DE91C6 /* WorldBankIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBankIndicator.swift; sourceTree = "<group>"; };
+		F2CA4F4823080A6D00DE91C6 /* APIFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFetcherTests.swift; sourceTree = "<group>"; };
+		F2DD75252379A93E0052B5CB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F2EB3D8722FEC1E2001ABB43 /* MarketShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2EB3D8A22FEC1E2001ABB43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F2EB3D9122FEC1E3001ABB43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2EB3D9622FEC1E3001ABB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2EB3D9B22FEC1E3001ABB43 /* MarketShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarketShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2EB3DA122FEC1E3001ABB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2EB3DAA22FEC281001ABB43 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		F2F1AA6622FEC57E0037DF64 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2EB3D8422FEC1E2001ABB43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2F1AA6722FEC57E0037DF64 /* Swinject.framework in Frameworks */,
+				F2A2BD9B231262660075B5BB /* Charts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EB3D9822FEC1E3001ABB43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2B033E8230038AE00CA904F /* SnapshotTesting.framework in Frameworks */,
+				F2CA4F3A2307F95300DE91C6 /* OHHTTPStubs.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F20C50E523084474007A8F56 /* WorldBank */ = {
+			isa = PBXGroup;
+			children = (
+				F20C50E623084493007A8F56 /* MapWorldBankDataTests.swift */,
+				F20C50F123095AAD007A8F56 /* CreateWorldBankSummaryTests.swift */,
+				F2953DCA235354D60049ABB8 /* RunWorldBankPipelineTests.swift */,
+			);
+			path = WorldBank;
+			sourceTree = "<group>";
+		};
+		F20C50EC230956E8007A8F56 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				F20C50ED230956F7007A8F56 /* Summary.swift */,
+				F20C50EF23095728007A8F56 /* SummaryEntry.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		F21CBA4F2313EFAA00961FB5 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				F21CBA502313EFF400961FB5 /* NetworkingCache.swift */,
+				F21CBA522313F04A00961FB5 /* PersistentNetworkingCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		F24269192349FD620006CA65 /* CoinMarketCap */ = {
+			isa = PBXGroup;
+			children = (
+				F242691A2349FD820006CA65 /* RunCryptoPipeline.swift */,
+				F2426923234A052D0006CA65 /* CreateCryptoSummary.swift */,
+				F2953DB82351F79D0049ABB8 /* CryptoPipelineOperationProvider.swift */,
+			);
+			path = CoinMarketCap;
+			sourceTree = "<group>";
+		};
+		F242691C2349FF380006CA65 /* CoinMarketCap */ = {
+			isa = PBXGroup;
+			children = (
+				F242691F234A047C0006CA65 /* CoinMarketCapResponse.swift */,
+				F2426921234A04CC0006CA65 /* CoinTicker.swift */,
+				F2426925234A07100006CA65 /* Quote.swift */,
+			);
+			path = CoinMarketCap;
+			sourceTree = "<group>";
+		};
+		F2426929234A797E0006CA65 /* CoinMarketCap */ = {
+			isa = PBXGroup;
+			children = (
+				F242692A234A79970006CA65 /* CreateCryptoSummaryTests.swift */,
+				F2953DBA235204750049ABB8 /* RunCryptoPipelineTests.swift */,
+			);
+			path = CoinMarketCap;
+			sourceTree = "<group>";
+		};
+		F28778212308139B00E3C4DC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F2877822230813B900E3C4DC /* XCTestCase+Utils.swift */,
+				F20C50E823084902007A8F56 /* OperationTestCase.swift */,
+				F2B0817A2340C0C500028554 /* Result+Error.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F2953DBC235205470049ABB8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F2953DBD2352054E0049ABB8 /* Networking */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F2953DBD2352054E0049ABB8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F2953DC723533DF50049ABB8 /* WorldBank */,
+				F2953DC423533DD80049ABB8 /* CoinMarketCap */,
+				F2953DBE2352055F0049ABB8 /* NetworkingCacheMock.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F2953DC423533DD80049ABB8 /* CoinMarketCap */ = {
+			isa = PBXGroup;
+			children = (
+				F2953DC523533DEC0049ABB8 /* CoinMarketCapOperationProviderMock.swift */,
+			);
+			path = CoinMarketCap;
+			sourceTree = "<group>";
+		};
+		F2953DC723533DF50049ABB8 /* WorldBank */ = {
+			isa = PBXGroup;
+			children = (
+				F2953DC823533E610049ABB8 /* WorldBankPipelineOperationProviderMock.swift */,
+			);
+			path = WorldBank;
+			sourceTree = "<group>";
+		};
+		F2A2BD80231104EC0075B5BB /* AssetInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2BD81231105140075B5BB /* AssetInfoViewController.swift */,
+				F2A2BD83231107350075B5BB /* AssetInfoViewModel.swift */,
+				F2A2BD8B231112650075B5BB /* AssetInfoCellViewModel.swift */,
+			);
+			path = AssetInfo;
+			sourceTree = "<group>";
+		};
+		F2A2BD8D231116C00075B5BB /* AssetInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F2A2BD8E231116DE0075B5BB /* AssetInfoCellViewModelTests.swift */,
+				F2A2BD90231118270075B5BB /* AssetInfoViewModelTests.swift */,
+			);
+			path = AssetInfo;
+			sourceTree = "<group>";
+		};
+		F2A2BD9223112DE00075B5BB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F2EB3D9122FEC1E3001ABB43 /* Assets.xcassets */,
+				F2A2BD9723112E290075B5BB /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F2B033DE2300354800CA904F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033DF2300354800CA904F /* AssetList */,
+				F2A2BD80231104EC0075B5BB /* AssetInfo */,
+				F2B033E02300354800CA904F /* LaunchScreen.storyboard */,
+				F2B033EF23003B6F00CA904F /* Styling.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2B033DF2300354800CA904F /* AssetList */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033E22300357A00CA904F /* AssetListViewController.swift */,
+				F2B033E4230036FC00CA904F /* AssetListCell.swift */,
+				F2B033F42300457900CA904F /* AssetListViewModel.swift */,
+				F2B033F92300476300CA904F /* AssetListCellModel.swift */,
+				F2A2BD8723110CD90075B5BB /* AssetListViewControllerFlowController.swift */,
+			);
+			path = AssetList;
+			sourceTree = "<group>";
+		};
+		F2B033E9230038F000CA904F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033EA230038F500CA904F /* AssetList */,
+				F2A2BD8D231116C00075B5BB /* AssetInfo */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2B033EA230038F500CA904F /* AssetList */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033EB2300391000CA904F /* AssetListCellSnapshotTest.swift */,
+			);
+			path = AssetList;
+			sourceTree = "<group>";
+		};
+		F2B033F123003D1500CA904F /* Utilis */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033F223003D2600CA904F /* UIView+DisableOldLayout.swift */,
+				F2A2BD89231110D80075B5BB /* Observable.swift */,
+				F2A2BD9823112EAC0075B5BB /* String+Localized.swift */,
+				F2B08178233F64B800028554 /* Result+NoResult.swift */,
+			);
+			path = Utilis;
+			sourceTree = "<group>";
+		};
+		F2B033F82300473C00CA904F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2B08176233F5B2400028554 /* Asset.swift */,
+				F20C50EC230956E8007A8F56 /* Summary */,
+				F2CA4F3D230806D700DE91C6 /* WorldBank */,
+				F242691C2349FF380006CA65 /* CoinMarketCap */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2B033FB2300493500CA904F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F2B081802340C2F300028554 /* Chaining */,
+				F21CBA4F2313EFAA00961FB5 /* Cache */,
+				F2B033FC2300494800CA904F /* WorldBank */,
+				F24269192349FD620006CA65 /* CoinMarketCap */,
+				F2B033FF230049AA00CA904F /* APIFetcher.swift */,
+				F2B0340123004B0D00CA904F /* APIError.swift */,
+				F2CA4F372307F79700DE91C6 /* AsynchronousOperation.swift */,
+				F242691D234A00410006CA65 /* FetcherDispatcher.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F2B033FC2300494800CA904F /* WorldBank */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033FD2300497100CA904F /* MapWorldBankData.swift */,
+				F20C50EA230956C5007A8F56 /* CreateWorldBankSummary.swift */,
+				F2A2BD852311079F0075B5BB /* RunWorldBankPipeline.swift */,
+				F2953DC023520B520049ABB8 /* WorldBankPipelineOperationProvider.swift */,
+			);
+			path = WorldBank;
+			sourceTree = "<group>";
+		};
+		F2B08173233F54F000028554 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				F2B08174233F551700028554 /* PersistentNetworkingCacheTests.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		F2B081802340C2F300028554 /* Chaining */ = {
+			isa = PBXGroup;
+			children = (
+				F2B0817C2340C29A00028554 /* Inputtable.swift */,
+				F2B0817E2340C2BF00028554 /* Resultable.swift */,
+				F2B081812340C30A00028554 /* OperationQueue+Chaining.swift */,
+			);
+			path = Chaining;
+			sourceTree = "<group>";
+		};
+		F2B081832340CAEA00028554 /* Chaining */ = {
+			isa = PBXGroup;
+			children = (
+				F2B081842340CB0300028554 /* OperationQueueChainingTests.swift */,
+			);
+			path = Chaining;
+			sourceTree = "<group>";
+		};
+		F2CA4F352307F5B000DE91C6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F2B081832340CAEA00028554 /* Chaining */,
+				F2B08173233F54F000028554 /* Cache */,
+				F20C50E523084474007A8F56 /* WorldBank */,
+				F2426929234A797E0006CA65 /* CoinMarketCap */,
+				F2CA4F4823080A6D00DE91C6 /* APIFetcherTests.swift */,
+				F2953DC223533B140049ABB8 /* FetcherDispatcherDefaultTests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F2CA4F362307F5BC00DE91C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F2CA4F3B230806BF00DE91C6 /* worldbankresponse.json */,
+				F2953DB32351DF8E0049ABB8 /* coinmarketcapresponse.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F2CA4F3D230806D700DE91C6 /* WorldBank */ = {
+			isa = PBXGroup;
+			children = (
+				F2CA4F3E230806F000DE91C6 /* WorldBankResponse.swift */,
+				F2CA4F402308071A00DE91C6 /* WorldBankPaging.swift */,
+				F2CA4F422308085700DE91C6 /* WorldBankEntry.swift */,
+				F2CA4F442308088900DE91C6 /* WorldBankCountry.swift */,
+				F2CA4F462308091B00DE91C6 /* WorldBankIndicator.swift */,
+			);
+			path = WorldBank;
+			sourceTree = "<group>";
+		};
+		F2EB3D7E22FEC1E2001ABB43 = {
+			isa = PBXGroup;
+			children = (
+				F2EB3D8922FEC1E2001ABB43 /* MarketShare */,
+				F2EB3D9E22FEC1E3001ABB43 /* MarketShareTests */,
+				F2EB3D8822FEC1E2001ABB43 /* Products */,
+				F2EB3DAC22FEC2EE001ABB43 /* Frameworks */,
+				F2EB3DAA22FEC281001ABB43 /* Cartfile */,
+				F2DD75252379A93E0052B5CB /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		F2EB3D8822FEC1E2001ABB43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2EB3D8722FEC1E2001ABB43 /* MarketShare.app */,
+				F2EB3D9B22FEC1E3001ABB43 /* MarketShareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2EB3D8922FEC1E2001ABB43 /* MarketShare */ = {
+			isa = PBXGroup;
+			children = (
+				F2B033F82300473C00CA904F /* Model */,
+				F2B033DE2300354800CA904F /* View */,
+				F2B033FB2300493500CA904F /* Networking */,
+				F2B033F123003D1500CA904F /* Utilis */,
+				F2A2BD9223112DE00075B5BB /* Resources */,
+				F2EB3D8A22FEC1E2001ABB43 /* AppDelegate.swift */,
+				F2B033F6230045E900CA904F /* AppContainer.swift */,
+				F2EB3D9622FEC1E3001ABB43 /* Info.plist */,
+			);
+			path = MarketShare;
+			sourceTree = "<group>";
+		};
+		F2EB3D9E22FEC1E3001ABB43 /* MarketShareTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2953DBC235205470049ABB8 /* Mocks */,
+				F28778212308139B00E3C4DC /* Utils */,
+				F2B033E9230038F000CA904F /* View */,
+				F2CA4F352307F5B000DE91C6 /* Networking */,
+				F2CA4F362307F5BC00DE91C6 /* Resources */,
+				F2EB3DA122FEC1E3001ABB43 /* Info.plist */,
+			);
+			path = MarketShareTests;
+			sourceTree = "<group>";
+		};
+		F2EB3DAC22FEC2EE001ABB43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2CA4F392307F95300DE91C6 /* OHHTTPStubs.framework */,
+				F2B033E62300388E00CA904F /* SnapshotTesting.framework */,
+				F2F1AA6622FEC57E0037DF64 /* Swinject.framework */,
+				F2A2BD9A231262660075B5BB /* Charts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2EB3D8622FEC1E2001ABB43 /* MarketShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2EB3DA422FEC1E3001ABB43 /* Build configuration list for PBXNativeTarget "MarketShare" */;
+			buildPhases = (
+				F2EB3D8322FEC1E2001ABB43 /* Sources */,
+				F2EB3D8422FEC1E2001ABB43 /* Frameworks */,
+				F2EB3D8522FEC1E2001ABB43 /* Resources */,
+				F2F1AA6822FEC59F0037DF64 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarketShare;
+			productName = MarketShare;
+			productReference = F2EB3D8722FEC1E2001ABB43 /* MarketShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2EB3D9A22FEC1E3001ABB43 /* MarketShareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2EB3DA722FEC1E3001ABB43 /* Build configuration list for PBXNativeTarget "MarketShareTests" */;
+			buildPhases = (
+				F2EB3D9722FEC1E3001ABB43 /* Sources */,
+				F2EB3D9822FEC1E3001ABB43 /* Frameworks */,
+				F2EB3D9922FEC1E3001ABB43 /* Resources */,
+				F2B033ED23003A8600CA904F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2EB3D9D22FEC1E3001ABB43 /* PBXTargetDependency */,
+			);
+			name = MarketShareTests;
+			productName = MarketShareTests;
+			productReference = F2EB3D9B22FEC1E3001ABB43 /* MarketShareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2EB3D7F22FEC1E2001ABB43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Jan Borowski";
+				TargetAttributes = {
+					F2EB3D8622FEC1E2001ABB43 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					F2EB3D9A22FEC1E3001ABB43 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = F2EB3D8622FEC1E2001ABB43;
+					};
+				};
+			};
+			buildConfigurationList = F2EB3D8222FEC1E2001ABB43 /* Build configuration list for PBXProject "MarketShare" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2EB3D7E22FEC1E2001ABB43;
+			productRefGroup = F2EB3D8822FEC1E2001ABB43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2EB3D8622FEC1E2001ABB43 /* MarketShare */,
+				F2EB3D9A22FEC1E3001ABB43 /* MarketShareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2EB3D8522FEC1E2001ABB43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2EB3D9222FEC1E3001ABB43 /* Assets.xcassets in Resources */,
+				F2A2BD9523112E290075B5BB /* Localizable.strings in Resources */,
+				F2DD75262379A93E0052B5CB /* README.md in Resources */,
+				F2EB3DAB22FEC281001ABB43 /* Cartfile in Resources */,
+				F2B033E12300354800CA904F /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EB3D9922FEC1E3001ABB43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2953DB42351DF8E0049ABB8 /* coinmarketcapresponse.json in Resources */,
+				F2CA4F3C230806BF00DE91C6 /* worldbankresponse.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2F1AA6822FEC59F0037DF64 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Swinject.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2EB3D8322FEC1E2001ABB43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2B033FA2300476300CA904F /* AssetListCellModel.swift in Sources */,
+				F2CA4F472308091C00DE91C6 /* WorldBankIndicator.swift in Sources */,
+				F2B033F323003D2600CA904F /* UIView+DisableOldLayout.swift in Sources */,
+				F2B0817D2340C29A00028554 /* Inputtable.swift in Sources */,
+				F2B03400230049AA00CA904F /* APIFetcher.swift in Sources */,
+				F21CBA512313EFF400961FB5 /* NetworkingCache.swift in Sources */,
+				F242691E234A00410006CA65 /* FetcherDispatcher.swift in Sources */,
+				F2B033F52300457900CA904F /* AssetListViewModel.swift in Sources */,
+				F20C50EE230956F7007A8F56 /* Summary.swift in Sources */,
+				F2B081822340C30A00028554 /* OperationQueue+Chaining.swift in Sources */,
+				F2B033E5230036FC00CA904F /* AssetListCell.swift in Sources */,
+				F2EB3D8B22FEC1E2001ABB43 /* AppDelegate.swift in Sources */,
+				F2CA4F432308085700DE91C6 /* WorldBankEntry.swift in Sources */,
+				F2426920234A047C0006CA65 /* CoinMarketCapResponse.swift in Sources */,
+				F2A2BD82231105140075B5BB /* AssetInfoViewController.swift in Sources */,
+				F2A2BD862311079F0075B5BB /* RunWorldBankPipeline.swift in Sources */,
+				F2B08177233F5B2400028554 /* Asset.swift in Sources */,
+				F2B0817F2340C2BF00028554 /* Resultable.swift in Sources */,
+				F2A2BD8A231110D80075B5BB /* Observable.swift in Sources */,
+				F2B08179233F64B800028554 /* Result+NoResult.swift in Sources */,
+				F2B033F7230045E900CA904F /* AppContainer.swift in Sources */,
+				F2B033FE2300497100CA904F /* MapWorldBankData.swift in Sources */,
+				F2A2BD8823110CD90075B5BB /* AssetListViewControllerFlowController.swift in Sources */,
+				F2CA4F452308088900DE91C6 /* WorldBankCountry.swift in Sources */,
+				F2426922234A04CC0006CA65 /* CoinTicker.swift in Sources */,
+				F2B033F023003B6F00CA904F /* Styling.swift in Sources */,
+				F242691B2349FD820006CA65 /* RunCryptoPipeline.swift in Sources */,
+				F2953DC123520B520049ABB8 /* WorldBankPipelineOperationProvider.swift in Sources */,
+				F20C50F023095728007A8F56 /* SummaryEntry.swift in Sources */,
+				F2953DB92351F79D0049ABB8 /* CryptoPipelineOperationProvider.swift in Sources */,
+				F2426926234A07100006CA65 /* Quote.swift in Sources */,
+				F2A2BD9923112EAC0075B5BB /* String+Localized.swift in Sources */,
+				F2CA4F3F230806F000DE91C6 /* WorldBankResponse.swift in Sources */,
+				F2A2BD8C231112650075B5BB /* AssetInfoCellViewModel.swift in Sources */,
+				F20C50EB230956C5007A8F56 /* CreateWorldBankSummary.swift in Sources */,
+				F2B033E32300357A00CA904F /* AssetListViewController.swift in Sources */,
+				F2426924234A052D0006CA65 /* CreateCryptoSummary.swift in Sources */,
+				F2CA4F382307F79700DE91C6 /* AsynchronousOperation.swift in Sources */,
+				F2A2BD84231107350075B5BB /* AssetInfoViewModel.swift in Sources */,
+				F2CA4F412308071A00DE91C6 /* WorldBankPaging.swift in Sources */,
+				F2B0340223004B0D00CA904F /* APIError.swift in Sources */,
+				F21CBA532313F04A00961FB5 /* PersistentNetworkingCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2EB3D9722FEC1E3001ABB43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2A2BD8F231116DE0075B5BB /* AssetInfoCellViewModelTests.swift in Sources */,
+				F2CA4F4923080A6D00DE91C6 /* APIFetcherTests.swift in Sources */,
+				F20C50F223095AAD007A8F56 /* CreateWorldBankSummaryTests.swift in Sources */,
+				F2A2BD91231118270075B5BB /* AssetInfoViewModelTests.swift in Sources */,
+				F20C50E923084902007A8F56 /* OperationTestCase.swift in Sources */,
+				F20C50E723084493007A8F56 /* MapWorldBankDataTests.swift in Sources */,
+				F2953DBF2352055F0049ABB8 /* NetworkingCacheMock.swift in Sources */,
+				F2953DBB235204750049ABB8 /* RunCryptoPipelineTests.swift in Sources */,
+				F2953DC323533B140049ABB8 /* FetcherDispatcherDefaultTests.swift in Sources */,
+				F2B033EC2300391000CA904F /* AssetListCellSnapshotTest.swift in Sources */,
+				F2953DC623533DEC0049ABB8 /* CoinMarketCapOperationProviderMock.swift in Sources */,
+				F2877823230813B900E3C4DC /* XCTestCase+Utils.swift in Sources */,
+				F2953DCB235354D60049ABB8 /* RunWorldBankPipelineTests.swift in Sources */,
+				F2B081852340CB0300028554 /* OperationQueueChainingTests.swift in Sources */,
+				F2B08175233F551700028554 /* PersistentNetworkingCacheTests.swift in Sources */,
+				F2B0817B2340C0C500028554 /* Result+Error.swift in Sources */,
+				F242692B234A79970006CA65 /* CreateCryptoSummaryTests.swift in Sources */,
+				F2953DC923533E610049ABB8 /* WorldBankPipelineOperationProviderMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2EB3D9D22FEC1E3001ABB43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2EB3D8622FEC1E2001ABB43 /* MarketShare */;
+			targetProxy = F2EB3D9C22FEC1E3001ABB43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2A2BD9723112E290075B5BB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2A2BD9623112E290075B5BB /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2EB3DA222FEC1E3001ABB43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F2EB3DA322FEC1E3001ABB43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2EB3DA522FEC1E3001ABB43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = MarketShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jb.MarketShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F2EB3DA622FEC1E3001ABB43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = MarketShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jb.MarketShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F2EB3DA822FEC1E3001ABB43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = MarketShareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jb.MarketShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarketShare.app/MarketShare";
+			};
+			name = Debug;
+		};
+		F2EB3DA922FEC1E3001ABB43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = MarketShareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jb.MarketShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarketShare.app/MarketShare";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2EB3D8222FEC1E2001ABB43 /* Build configuration list for PBXProject "MarketShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EB3DA222FEC1E3001ABB43 /* Debug */,
+				F2EB3DA322FEC1E3001ABB43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2EB3DA422FEC1E3001ABB43 /* Build configuration list for PBXNativeTarget "MarketShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EB3DA522FEC1E3001ABB43 /* Debug */,
+				F2EB3DA622FEC1E3001ABB43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2EB3DA722FEC1E3001ABB43 /* Build configuration list for PBXNativeTarget "MarketShareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2EB3DA822FEC1E3001ABB43 /* Debug */,
+				F2EB3DA922FEC1E3001ABB43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2EB3D7F22FEC1E2001ABB43 /* Project object */;
+}
